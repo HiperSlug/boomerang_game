@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://globals/signal_bus.gd"
 
+[global_group]
+
+player=""
+
 [input]
 
 left={
@@ -51,6 +55,7 @@ throw={
 2d_physics/layer_1="ground"
 2d_physics/layer_2="player"
 2d_physics/layer_3="deathzones"
+2d_physics/layer_4="boomerang"
 
 [rendering]
 

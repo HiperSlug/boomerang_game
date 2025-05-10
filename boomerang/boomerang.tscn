@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgi28hywfxw54"]
+
+[ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://boomerang/fruit.png" id="1_8p5i4"]
+[ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
+a = Vector2(7, -0.00300302)
+b = Vector2(-7, 0.00300302)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg8xu"]
+radius = 7.0
+
+[node name="Boomerang" type="CharacterBody2D"]
+collision_layer = 8
+motion_mode = 1
+script = ExtResource("1_wg8xu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 0.000429003
+shape = SubResource("SegmentShape2D_wg8xu")
+one_way_collision = true
+
+[node name="Fruit" type="Sprite2D" parent="."]
+position = Vector2(0, -2.5)
+texture = ExtResource("1_8p5i4")
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wg8xu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
