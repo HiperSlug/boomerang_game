@@ -8,7 +8,7 @@ enum STATE {
 var state: STATE = STATE.OUT
 
 @export var inital_speed_out: float = 200
-@export var deceleration_out: float = 120
+@export var deceleration_out: float = 200
 @export var inital_speed_back: float = 150
 @export var acceleration_back: float = 1000
 @export var terminal_return_speed: float = 600

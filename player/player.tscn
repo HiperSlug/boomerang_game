@@ -1,7 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://vfcxxb2eickv"]
+[gd_scene load_steps=30 format=3 uid="uid://vfcxxb2eickv"]
 
 [ext_resource type="Texture2D" uid="uid://dkjqs0gqf52pr" path="res://player/knight.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://c5jbhq2avua8p" path="res://player/player.gd" id="1_rkbax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(64, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -103,6 +107,14 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7pqkx")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rkbax")
 }, {
 "duration": 1.0,
@@ -189,8 +201,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(11, 9)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -200,13 +212,12 @@ script = ExtResource("1_rkbax")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.708147
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_rkbax")
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_rkbax")
 
 [node name="OnFloorBufferTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -222,6 +233,10 @@ one_shot = true
 
 [node name="BoomerangCaughtBufferTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="BoostAnimationTimer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="BoomerangCaughtBufferTimer" to="." method="_on_boomerang_caught_buffer_timer_timeout"]

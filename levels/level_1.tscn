@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bcbwtb20kq5uk"]
+[gd_scene load_steps=11 format=4 uid="uid://bcbwtb20kq5uk"]
 
 [ext_resource type="Script" uid="uid://1bjsee6ocm5c" path="res://levels/level_1.gd" id="1_bt44k"]
 [ext_resource type="PackedScene" uid="uid://vfcxxb2eickv" path="res://player/player.tscn" id="1_jirdo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgavj6askm078" path="res://death_zone/death_zone.tscn" id="4_kx6l7"]
 [ext_resource type="PackedScene" uid="uid://d18mppm3f5iex" path="res://switch/switch.tscn" id="5_n46q3"]
 [ext_resource type="PackedScene" uid="uid://dl3hv24wgv7iu" path="res://door/door.tscn" id="6_btoec"]
+[ext_resource type="PackedScene" uid="uid://chjoj4wg4weee" path="res://coin_of_death/coin_of_death.tscn" id="6_gwceb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mhv4"]
 texture = ExtResource("2_bt44k")
@@ -203,6 +204,9 @@ shape = SubResource("WorldBoundaryShape2D_n46q3")
 
 [node name="Door" parent="." instance=ExtResource("6_btoec")]
 position = Vector2(60, 0)
+
+[node name="CoinOfDeath" parent="Door" instance=ExtResource("6_gwceb")]
+position = Vector2(-141, 2)
 
 [node name="Switch" parent="." instance=ExtResource("5_n46q3")]
 position = Vector2(135, 11)

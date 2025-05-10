@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
-a = Vector2(7, -0.00300302)
-b = Vector2(-7, 0.00300302)
+a = Vector2(6, -0.00257385)
+b = Vector2(-6, 0.00257415)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wg8xu"]
 atlas = ExtResource("1_8p5i4")

@@ -63,12 +63,14 @@ func x_face_towards(new_direction: float) -> void:
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 func set_state(new_state: STATE) -> void:
-	if new_state == STATE.IDLE:
-		player_sprite.play("idle")
-	elif new_state == STATE.RUNNING:
-		player_sprite.play("run")
-	elif new_state == STATE.JUMPING:
-		player_sprite.play("jump")
+	if $BoostAnimationTimer.is_stopped():
+		if new_state == STATE.IDLE:
+			player_sprite.play("idle")
+		elif new_state == STATE.RUNNING:
+			player_sprite.play("run")
+		elif new_state == STATE.JUMPING:
+			player_sprite.play("jump")
+	
 	state = new_state
 
 
@@ -91,7 +93,7 @@ func caught_boomerang() -> void:
 	boomerang_caught_buffer_timer.start()
 	handle_catch_boost()
 
-@export var catch_boost_speed: float = 500
+@export var catch_boost_speed: float = 300
 func handle_catch_boost() -> void:
 	if not boomerang_caught_buffer_timer.is_stopped() and not boomerang_thrown_buffer_timer.is_stopped():
 		var direction: Vector2 = Input.get_vector("left","right","jump","down")
@@ -99,6 +101,8 @@ func handle_catch_boost() -> void:
 		boomerang_caught_buffer_timer.stop()
 		boomerang_thrown_buffer_timer.stop()
 		boomerang_caught_buffer_timer.timeout.emit()
+		$BoostAnimationTimer.start()
+		player_sprite.play("boost")
 
 func _unhandled_input(event: InputEvent) -> void:
 	
