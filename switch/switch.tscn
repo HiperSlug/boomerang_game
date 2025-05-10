@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://d18mppm3f5iex"]
+
+[ext_resource type="Script" uid="uid://d3s0dmixhjtfc" path="res://switch/switch.gd" id="1_ql8yy"]
+[ext_resource type="Texture2D" uid="uid://cnt1cdj8djul2" path="res://switch/slime_green.png" id="1_yljoe"]
+[ext_resource type="Texture2D" uid="uid://dh4wtcvityeas" path="res://switch/slime_purple.png" id="2_yxdan"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql8yy"]
+size = Vector2(11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxdan"]
+atlas = ExtResource("2_yxdan")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi7mq"]
+atlas = ExtResource("1_yljoe")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gja14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxdan")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi7mq")
+}],
+"loop": false,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="Switch" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ql8yy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.68221e-07, -0.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ql8yy")
+
+[node name="Switch" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_gja14")
+animation = &"off"
+autoplay = "off"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

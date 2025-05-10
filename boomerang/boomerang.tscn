@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgi28hywfxw54"]
+[gd_scene load_steps=14 format=3 uid="uid://cgi28hywfxw54"]
 
 [ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://boomerang/fruit.png" id="1_8p5i4"]
 [ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
@@ -6,6 +6,75 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
 a = Vector2(7, -0.00300302)
 b = Vector2(-7, 0.00300302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg8xu"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nipi"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rttqd"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md6cg"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i416i"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6a1"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wekyx"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w6g3"]
+atlas = ExtResource("1_8p5i4")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upsmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg8xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nipi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rttqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md6cg")
+}],
+"loop": false,
+"name": &"boost",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i416i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj6a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wekyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w6g3")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wg8xu"]
 radius = 7.0
@@ -21,18 +90,21 @@ rotation = 0.000429003
 shape = SubResource("SegmentShape2D_wg8xu")
 one_way_collision = true
 
-[node name="Fruit" type="Sprite2D" parent="."]
+[node name="Boomerang" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2.5)
-texture = ExtResource("1_8p5i4")
-region_enabled = true
-region_rect = Rect2(0, 48, 16, 16)
+sprite_frames = SubResource("SpriteFrames_upsmk")
+animation = &"boost"
+autoplay = "spin"
+frame = 3
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wg8xu")
 
+[connection signal="animation_finished" from="Boomerang" to="." method="_on_boomerang_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

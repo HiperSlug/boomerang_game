@@ -20,13 +20,17 @@ func initalize_velocity(direction: Vector2i) -> void:
 	velocity = direction * inital_speed_out
 
 
-func _process(_delta: float) -> void:
-	if velocity.x == 0 and not Input.is_action_pressed("throw"):
-		state = STATE.BACK
-		$Area2D.monitoring = true
-		$CollisionShape2D.disabled = true
-		var direction: Vector2 = position.direction_to(player.position)
-		velocity = direction * inital_speed_back
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("throw") and state != STATE.BACK:
+		switch_state_to_back()
+
+func switch_state_to_back() -> void:
+	state = STATE.BACK
+	$Area2D.monitoring = true
+	$CollisionShape2D.disabled = true
+	var direction: Vector2 = position.direction_to(player.position)
+	velocity = direction * inital_speed_back
+	$Boomerang.play("boost")
 
 func _physics_process(delta: float) -> void:
 	
@@ -37,6 +41,10 @@ func _physics_process(delta: float) -> void:
 		var direction: Vector2 = position.direction_to(player.position)
 		var drag: Vector2 = (velocity/terminal_return_speed) * acceleration_back * delta
 		velocity += (acceleration_back * direction * delta) - drag
+		
+		var angle: float = velocity.angle() + (sign(velocity.x) * (PI/2) - (PI/2))
+		rotation = angle
+	
 	
 	move_and_slide()
 	
@@ -47,6 +55,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
+		body.caught_boomerang()
 		queue_free()
 	else:
 		pass
+
+
+func _on_boomerang_animation_finished() -> void:
+	$Boomerang.play("spin")
