@@ -105,7 +105,7 @@ modulate = Color(0.861661, 0.404785, 0.520713, 1)
 sprite_frames = SubResource("SpriteFrames_5n4jr")
 animation = &"spin"
 autoplay = "spin"
-frame_progress = 0.78226
+frame_progress = 0.360733
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_0l5lr")

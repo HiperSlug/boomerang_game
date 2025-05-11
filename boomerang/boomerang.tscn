@@ -106,5 +106,10 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wg8xu")
 
+[node name="LongPressFastReturnTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="animation_finished" from="Boomerang" to="." method="_on_boomerang_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LongPressFastReturnTimer" to="." method="_on_long_press_fast_return_timer_timeout"]

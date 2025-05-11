@@ -15,11 +15,23 @@ var state: STATE = STATE.IDLE
 @onready var on_floor_buffer_timer: Timer = $OnFloorBufferTimer
 @onready var jump_pressed_buffer_timer: Timer = $JumpPressedBufferTimer
 
+func _ready() -> void:
+	SignalBus.death.connect(on_death)
+
+
+func on_death() -> void:
+	player_sprite.play("death")
+	$PauseAnimationChangesTimer.start(.2)
+	velocity = Vector2.ZERO
+	process_mode = Node.PROCESS_MODE_DISABLED
+
 func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		set_state(STATE.JUMPING)
-		velocity += get_gravity() * delta
+		handle_catch_boost()
+		if $GravityDisabledTimer.is_stopped():
+			velocity += get_gravity() * delta
 	
 	else:
 		on_floor_buffer_timer.start()
@@ -42,11 +54,14 @@ func _physics_process(delta: float) -> void:
 		drag = sign(drag) * clampf(abs(drag), 0,acceleration)
 	
 	if direction != 0:
-		velocity.x += (direction * acceleration + drag) * delta
+		if direction != sign(velocity.x):
+			velocity.x += (direction * acceleration + drag) * delta * 2
+		else:
+			velocity.x += (direction * acceleration + drag) * delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration * 2 * delta)
 	
-	handle_catch_boost()
+	
 	
 	move_and_slide()
 
@@ -63,7 +78,7 @@ func x_face_towards(new_direction: float) -> void:
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 func set_state(new_state: STATE) -> void:
-	if $BoostAnimationTimer.is_stopped():
+	if $PauseAnimationChangesTimer.is_stopped():
 		if new_state == STATE.IDLE:
 			player_sprite.play("idle")
 		elif new_state == STATE.RUNNING:
@@ -87,22 +102,23 @@ func throw_boomerang() -> void:
 	can_throw_boomerang = false
 
 
-@onready var boomerang_thrown_buffer_timer: Timer = $BoomerangThrownBufferTimer
 @onready var boomerang_caught_buffer_timer: Timer = $BoomerangCaughtBufferTimer
 func caught_boomerang() -> void:
 	boomerang_caught_buffer_timer.start()
-	handle_catch_boost()
+	can_throw_boomerang = true
 
 @export var catch_boost_speed: float = 300
 func handle_catch_boost() -> void:
-	if not boomerang_caught_buffer_timer.is_stopped() and not boomerang_thrown_buffer_timer.is_stopped():
+	if not boomerang_caught_buffer_timer.is_stopped() and Input.is_action_just_pressed("jump"):
 		var direction: Vector2 = Input.get_vector("left","right","jump","down")
+		if direction == Vector2.ZERO:
+			direction = facing
 		velocity = catch_boost_speed * direction
 		boomerang_caught_buffer_timer.stop()
-		boomerang_thrown_buffer_timer.stop()
 		boomerang_caught_buffer_timer.timeout.emit()
-		$BoostAnimationTimer.start()
+		$PauseAnimationChangesTimer.start(.1)
 		player_sprite.play("boost")
+		$GravityDisabledTimer.start()
 
 func _unhandled_input(event: InputEvent) -> void:
 	
@@ -115,8 +131,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("throw"):
 		if can_throw_boomerang:
 			throw_boomerang()
-		boomerang_thrown_buffer_timer.start()
-
-
-func _on_boomerang_caught_buffer_timer_timeout() -> void:
-	can_throw_boomerang = true

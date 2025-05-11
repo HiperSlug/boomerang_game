@@ -1,9 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://vfcxxb2eickv"]
+[gd_scene load_steps=31 format=3 uid="uid://vfcxxb2eickv"]
 
 [ext_resource type="Texture2D" uid="uid://dkjqs0gqf52pr" path="res://player/knight.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://c5jbhq2avua8p" path="res://player/player.gd" id="1_rkbax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
 atlas = ExtResource("1_oul6g")
 region = Rect2(64, 192, 32, 32)
 
@@ -115,6 +119,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uw77l")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rkbax")
 }, {
 "duration": 1.0,
@@ -212,8 +224,9 @@ script = ExtResource("1_rkbax")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3.5)
@@ -227,16 +240,14 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="BoomerangThrownBufferTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [node name="BoomerangCaughtBufferTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 one_shot = true
 
-[node name="BoostAnimationTimer" type="Timer" parent="."]
+[node name="PauseAnimationChangesTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
-[connection signal="timeout" from="BoomerangCaughtBufferTimer" to="." method="_on_boomerang_caught_buffer_timer_timeout"]
+[node name="GravityDisabledTimer" type="Timer" parent="."]
+wait_time = 0.125
+one_shot = true
