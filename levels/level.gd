@@ -11,10 +11,8 @@ func _ready() -> void:
 
 
 func on_player_death() -> void:
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.2).timeout # technically this must be manually synced with the player however it doesnt matter
 	get_tree().call_deferred("reload_current_scene")
-
-
 
 
 func on_boomerang_thrown(boomerang: Boomerang) -> void:

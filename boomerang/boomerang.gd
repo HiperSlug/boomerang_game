@@ -14,53 +14,69 @@ var state: STATE = STATE.OUT
 @export var acceleration_back: float = 750
 @export var terminal_return_speed: float = 450
 
-@export var very_fast_but_not_instant_return_speed: float = 1500
+@export var very_fast_but_not_instant_teleport_speed: float = 1500
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var area_2d: Area2D = $Area2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var long_press_fast_return_timer: Timer = $LongPressFastReturnTimer
 
-func initalize_velocity(direction: Vector2i) -> void:
+
+func initalize_velocity(direction: Vector2i) -> void: # called by player
 	velocity = direction * inital_speed_out
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("return"):
-		if state != STATE.BACK:
+	if event.is_action_pressed("throw"):
+		if state == STATE.OUT:
 			set_state(STATE.BACK)
 	
-	if event.is_action_released("throw"):
+	elif event.is_action_released("throw"):
 		if state == STATE.OUT:
 			velocity /= 2
 
 
 func set_state(new_state: STATE) -> void:
 	if new_state == STATE.BACK:
-		$Area2D.monitoring = true
-		$CollisionShape2D.disabled = true
+		collision_shape_2d.disabled = true
 		var direction: Vector2 = position.direction_to(player.position)
 		velocity = direction * inital_speed_back
-		$Boomerang.play("boost")
-		$LongPressFastReturnTimer.start()
+		sprite_2d.play("boost")
+		long_press_fast_return_timer.start()
+	
 	state = new_state
 
+@onready var spin: AudioStreamPlayer2D = $Spin
+@onready var floating_time_out: Timer = $FloatingTimeOut
+@export var pitch_scale_increase: float = .5 / 3
+@export var slow_return_pitch_scale: float = .8
 func _physics_process(delta: float) -> void:
 	
+	if velocity == Vector2.ZERO:
+		spin.pitch_scale += pitch_scale_increase * delta
+	else:
+		floating_time_out.start()
+	
 	if state == STATE.OUT:
-		pass
 		velocity.x = move_toward(velocity.x,0,deceleration_out * delta)
 	
 	elif state == STATE.BACK:
+		spin.pitch_scale = slow_return_pitch_scale
+		
 		var direction: Vector2 = position.direction_to(player.position)
 		var drag: Vector2 = (velocity/terminal_return_speed) * acceleration_back * delta
 		velocity += (acceleration_back * direction * delta) - drag
 		
 		var angle: float = velocity.angle() + (sign(velocity.x) * (PI/2) - (PI/2))
 		rotation = angle
-		if not Input.is_action_pressed("return"):
-			$LongPressFastReturnTimer.start()
+		
+		if not Input.is_action_pressed("throw"):
+			long_press_fast_return_timer.start() # May edit this later
 		
 	elif state == STATE.TELEPORT:
-		position = position.move_toward(player.position,very_fast_but_not_instant_return_speed * delta)
+		position = position.move_toward(player.position,very_fast_but_not_instant_teleport_speed * delta)
 	
 	move_and_slide()
 	
@@ -70,16 +86,23 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and state != STATE.OUT:
 		body.caught_boomerang()
 		queue_free()
-	else:
-		pass
 
 
-func _on_boomerang_animation_finished() -> void:
-	$Boomerang.play("spin")
+func _on_boomerang_animation_finished() -> void: # only called after boost ends because "spin" loops
+	sprite_2d.play("spin")
 
 
 func _on_long_press_fast_return_timer_timeout() -> void:
 	set_state(STATE.TELEPORT)
+
+
+func _on_floating_time_out_timeout() -> void:
+	set_state(STATE.BACK)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player and state == STATE.OUT:
+		set_state(STATE.BACK)

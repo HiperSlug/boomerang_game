@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgi28hywfxw54"]
+[gd_scene load_steps=15 format=3 uid="uid://cgi28hywfxw54"]
 
 [ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://boomerang/fruit.png" id="1_8p5i4"]
 [ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
+[ext_resource type="AudioStream" uid="uid://c8s7dlgndyh73" path="res://boomerang/cappy-throw-sfx-101soundboards.mp3" id="4_rttqd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
 a = Vector2(6, -0.00257385)
@@ -90,7 +91,7 @@ rotation = 0.000429003
 shape = SubResource("SegmentShape2D_wg8xu")
 one_way_collision = true
 
-[node name="Boomerang" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2.5)
 sprite_frames = SubResource("SpriteFrames_upsmk")
 animation = &"boost"
@@ -101,7 +102,6 @@ frame_progress = 1.0
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wg8xu")
@@ -110,6 +110,18 @@ shape = SubResource("CircleShape2D_wg8xu")
 wait_time = 0.15
 one_shot = true
 
-[connection signal="animation_finished" from="Boomerang" to="." method="_on_boomerang_animation_finished"]
+[node name="Spin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rttqd")
+pitch_scale = 1.5
+autoplay = true
+attenuation = 25.9921
+
+[node name="FloatingTimeOut" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_boomerang_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="LongPressFastReturnTimer" to="." method="_on_long_press_fast_return_timer_timeout"]
+[connection signal="timeout" from="FloatingTimeOut" to="." method="_on_floating_time_out_timeout"]

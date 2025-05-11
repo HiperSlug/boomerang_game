@@ -1,15 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://vfcxxb2eickv"]
+[gd_scene load_steps=34 format=3 uid="uid://vfcxxb2eickv"]
 
 [ext_resource type="Texture2D" uid="uid://dkjqs0gqf52pr" path="res://player/knight.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://c5jbhq2avua8p" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="AudioStream" uid="uid://crr21hk3nclom" path="res://player/WHOOSH_ARM_SWING_01.wav" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://cwvrf7sgyc21c" path="res://player/CLOTHING_MATERIAL_MOVEMENT_01.wav" id="4_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
 atlas = ExtResource("1_oul6g")
 region = Rect2(64, 192, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rptt4"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(64, 224, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
 atlas = ExtResource("1_oul6g")
-region = Rect2(64, 192, 32, 32)
+region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -119,6 +125,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rptt4")
+}],
+"loop": false,
+"name": &"catch",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uw77l")
 }],
 "loop": false,
@@ -224,30 +238,55 @@ script = ExtResource("1_rkbax")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"death"
+animation = &"catch"
 autoplay = "idle"
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_rkbax")
 
-[node name="OnFloorBufferTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="OnFloorBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.1
 one_shot = true
 
-[node name="JumpPressedBufferTimer" type="Timer" parent="."]
+[node name="JumpPressedBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.1
 one_shot = true
 
-[node name="BoomerangCaughtBufferTimer" type="Timer" parent="."]
+[node name="BoomerangCaughtBufferTimer" type="Timer" parent="Timers"]
 wait_time = 0.5
 one_shot = true
 
-[node name="PauseAnimationChangesTimer" type="Timer" parent="."]
+[node name="PauseAnimationChangesTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
 
-[node name="GravityDisabledTimer" type="Timer" parent="."]
+[node name="GravityDisabledTimer" type="Timer" parent="Timers"]
 wait_time = 0.125
 one_shot = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g1dw6")
+
+[node name="Boost" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g1dw6")
+pitch_scale = 1.3
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_g1dw6")
+pitch_scale = 0.5
+
+[node name="Run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yw30f")
+volume_db = -13.462
+pitch_scale = 1.59
+
+[node name="Catch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g1dw6")
+pitch_scale = 2.6
