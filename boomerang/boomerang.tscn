@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://boomerang/fruit.png" id="1_8p5i4"]
 [ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
-[ext_resource type="AudioStream" uid="uid://c8s7dlgndyh73" path="res://boomerang/cappy-throw-sfx-101soundboards.mp3" id="4_rttqd"]
+[ext_resource type="AudioStream" uid="uid://c8s7dlgndyh73" path="res://boomerang/totally_stolen_cappy_sound.mp3" id="4_rttqd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
 a = Vector2(6, -0.00257385)

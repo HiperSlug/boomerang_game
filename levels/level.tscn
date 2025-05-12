@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dtatic1opbqyt" path="res://levels/level_tileset.tres" id="3_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://bgavj6askm078" path="res://death_zone/death_zone.tscn" id="4_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://xc4ti64lx8xh" path="res://exit/exit.tscn" id="5_safpt"]
-[ext_resource type="Script" uid="uid://dfqxh4qbjksgs" path="res://levels/pause_menu.gd" id="6_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://cvccximongwej" path="res://gui/gui.tscn" id="6_gjl0y"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n46q3"]
 
@@ -22,8 +22,10 @@ tile_set = ExtResource("3_5mrsh")
 [node name="Player" parent="." instance=ExtResource("2_safpt")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3.615, 3.615)
+zoom = Vector2(2.55, 2.55)
+limit_left = -448
 limit_top = -128
+limit_right = 2224
 limit_bottom = 176
 
 [node name="DeathZone" parent="." instance=ExtResource("4_vnv7o")]
@@ -39,99 +41,4 @@ position = Vector2(456, 8)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GUI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -52.0
-offset_bottom = 24.0
-grow_horizontal = 0
-
-[node name="ResetButton" type="Button" parent="CanvasLayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 64
-text = "R"
-flat = true
-icon_alignment = 1
-
-[node name="PauseButton" type="Button" parent="CanvasLayer/GUI/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 64
-text = "P"
-flat = true
-
-[node name="PauseMenu" type="Control" parent="CanvasLayer/GUI"]
-process_mode = 3
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 2
-script = ExtResource("6_gjl0y")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.556863, 0.556863, 0.556863, 0.294118)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/PauseMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PauseButton" type="Button" parent="CanvasLayer/GUI/PauseMenu/HBoxContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../LevelSelectButton")
-focus_neighbor_top = NodePath("../LevelSelectButton")
-focus_neighbor_right = NodePath("../LevelSelectButton")
-focus_neighbor_bottom = NodePath("../LevelSelectButton")
-focus_next = NodePath("../LevelSelectButton")
-focus_previous = NodePath("../LevelSelectButton")
-theme_override_font_sizes/font_size = 64
-text = "P"
-
-[node name="LevelSelectButton" type="Button" parent="CanvasLayer/GUI/PauseMenu/HBoxContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../PauseButton")
-focus_neighbor_top = NodePath("../PauseButton")
-focus_neighbor_right = NodePath("../PauseButton")
-focus_neighbor_bottom = NodePath("../PauseButton")
-focus_next = NodePath("../PauseButton")
-focus_previous = NodePath("../PauseButton")
-theme_override_font_sizes/font_size = 64
-text = "L"
-
-[connection signal="pressed" from="CanvasLayer/GUI/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/GUI/HBoxContainer/PauseButton" to="CanvasLayer/GUI/PauseMenu" method="pause"]
-[connection signal="pressed" from="CanvasLayer/GUI/PauseMenu/HBoxContainer/PauseButton" to="CanvasLayer/GUI/PauseMenu" method="unpause"]
-[connection signal="pressed" from="CanvasLayer/GUI/PauseMenu/HBoxContainer/LevelSelectButton" to="CanvasLayer/GUI/PauseMenu" method="_on_level_select_button_pressed"]
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("6_gjl0y")]

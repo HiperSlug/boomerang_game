@@ -225,6 +225,11 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
@@ -238,8 +243,9 @@ script = ExtResource("1_rkbax")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"catch"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.209485
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3.5)

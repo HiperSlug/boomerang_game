@@ -10,7 +10,7 @@ var state: STATE = STATE.OUT
 
 @export var inital_speed_out: float = 180
 @export var deceleration_out: float = 200
-@export var inital_speed_back: float = 150
+@export var inital_speed_back: float = 200
 @export var acceleration_back: float = 750
 @export var terminal_return_speed: float = 450
 
@@ -24,8 +24,9 @@ var state: STATE = STATE.OUT
 @onready var long_press_fast_return_timer: Timer = $LongPressFastReturnTimer
 
 
-func initalize_velocity(direction: Vector2i) -> void: # called by player
-	velocity = direction * inital_speed_out
+func initalize_velocity(direction: Vector2i, inherited_speed: float) -> void: # called by player
+	inherited_speed = 0
+	velocity = direction * (inital_speed_out + inherited_speed)
 
 
 func _input(event: InputEvent) -> void:

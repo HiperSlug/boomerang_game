@@ -104,3 +104,12 @@ text = "14"
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "15"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 64
+text = "BACK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

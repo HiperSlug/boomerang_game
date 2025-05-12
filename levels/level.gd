@@ -17,7 +17,3 @@ func on_player_death() -> void:
 
 func on_boomerang_thrown(boomerang: Boomerang) -> void:
 	add_child(boomerang)
-
-
-func _on_reset_button_pressed() -> void:
-	get_tree().call_deferred("reload_current_scene")

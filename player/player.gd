@@ -4,12 +4,14 @@ class_name Player
 
 @export var terminal_speed: float = 170
 @export var jump_velocity: float = -300
-@export var acceleration: float = 550
+@export var acceleration: float = 750
 
 @onready var on_floor_buffer_timer: Timer = $Timers/OnFloorBufferTimer
 @onready var jump_pressed_buffer_timer: Timer = $Timers/JumpPressedBufferTimer
 
 @onready var gravity_disabled_timer: Timer = $Timers/GravityDisabledTimer # used during dashes
+
+@export var stall_velociy: float = -200
 
 enum ANIMATION_STATE {
 	IDLE,
@@ -39,13 +41,15 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		
 		handle_catch_boost() # move this somewhere else later for further implementation #not moving it somewhere else
-		
+
 		set_state(ANIMATION_STATE.JUMPING)
 		handle_gravity(delta)
 	
 	
 	else: # on floor
 		on_floor_buffer_timer.start()
+		
+		can_throw_boomerang = true
 		
 		if abs(velocity.x) > 0:
 			set_state(ANIMATION_STATE.RUNNING)
@@ -136,20 +140,28 @@ func set_state(new_state: ANIMATION_STATE) -> void:
 
 
 var boomerang_scene: PackedScene = preload("res://boomerang/boomerang.tscn")
-var can_throw_boomerang: bool = true
+var has_boomerang: bool = true
 var facing: Vector2i = Vector2i.RIGHT
 @export var offset: float = 15
 
 func throw_boomerang() -> void:
 	var boomerang: Boomerang = boomerang_scene.instantiate()
+	var speed: float = abs(velocity.x)
 	
 	boomerang.position = position + (facing * offset)
-	boomerang.initalize_velocity(facing)
+	boomerang.initalize_velocity(facing,speed)
 	
 	SignalBus.add_boomerang_to_level.emit(boomerang)
 	
+	has_boomerang = false
 	can_throw_boomerang = false
+	
+	if not is_on_floor() and velocity.y > 0:
+		stall()
 
+func stall() -> void:
+	pass
+	#velocity.y = stall_velociy
 
 func caught_boomerang() -> void: # called by boomerang
 	
@@ -157,7 +169,7 @@ func caught_boomerang() -> void: # called by boomerang
 	player_sprite.play("catch")
 	pause_animation_changes_timer.start(.5)
 	boomerang_caught_buffer_timer.start()
-	can_throw_boomerang = true
+	has_boomerang = true
 
 
 @onready var boomerang_caught_buffer_timer: Timer = $Timers/BoomerangCaughtBufferTimer
@@ -173,7 +185,7 @@ func handle_catch_boost() -> void:
 		jump_audio.stop()
 		pause_animation_changes_timer.stop()
 		
-		var direction: Vector2 = Input.get_vector("left","right","jump","down")
+		var direction: Vector2 = Input.get_vector("left","right","up","down")
 		if direction == Vector2.ZERO:
 			direction = facing
 		
@@ -183,7 +195,7 @@ func handle_catch_boost() -> void:
 		velocity = catch_boost_speed * direction
 		gravity_disabled_timer.start(catch_boost_time)
 
-
+var can_throw_boomerang: bool = true
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("jump"):
@@ -193,5 +205,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		velocity.y /= 2
 	
 	elif event.is_action_pressed("throw"):
-		if can_throw_boomerang:
-			throw_boomerang()
+		if has_boomerang:
+			if can_throw_boomerang:
+				throw_boomerang()

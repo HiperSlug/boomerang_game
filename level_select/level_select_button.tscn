@@ -6,6 +6,3 @@
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_43pcx")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="pressed" from="." to="." method="queue_free"]
