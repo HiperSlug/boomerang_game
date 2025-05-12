@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://tbemk5ka72tb"]
+
+[ext_resource type="Script" uid="uid://c0x1d3t42qvmb" path="res://level_select/level_select_button.gd" id="1_43pcx"]
+
+[node name="LevelSelectButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_43pcx")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="." to="." method="queue_free"]

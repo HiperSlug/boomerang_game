@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb5m62jxax0vu"]
+
+[ext_resource type="Script" uid="uid://bsjd5q8feq0to" path="res://level_select/level_select.gd" id="1_kxnyd"]
+[ext_resource type="PackedScene" uid="uid://tbemk5ka72tb" path="res://level_select/level_select_button.tscn" id="1_sv8in"]
+[ext_resource type="PackedScene" uid="uid://d06nwwkx80nuh" path="res://levels/level_1.tscn" id="2_kxnyd"]
+
+[node name="LevelSelect" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kxnyd")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="LevelSelectButton" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "1"
+level_scene = ExtResource("2_kxnyd")
+
+[node name="LevelSelectButton2" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "2"
+
+[node name="LevelSelectButton3" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "3"
+
+[node name="LevelSelectButton4" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "4"
+
+[node name="LevelSelectButton5" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "5"
+
+[node name="LevelSelectButton6" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "6"
+
+[node name="LevelSelectButton7" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "7"
+
+[node name="LevelSelectButton8" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "8"
+
+[node name="LevelSelectButton9" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "9"
+
+[node name="LevelSelectButton10" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "10"
+
+[node name="LevelSelectButton11" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "11"
+
+[node name="LevelSelectButton12" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "12"
+
+[node name="LevelSelectButton13" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "13"
+
+[node name="LevelSelectButton14" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "14"
+
+[node name="LevelSelectButton15" parent="GridContainer" instance=ExtResource("1_sv8in")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "15"

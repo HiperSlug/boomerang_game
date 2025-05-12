@@ -89,8 +89,9 @@ func jump() -> void:
 	on_floor_buffer_timer.stop()
 	if not boomerang_caught_buffer_timer.is_stopped():
 		velocity.y = jump_velocity - (catch_boost_speed / 4)
-		catch.play(0)
+		boost.play(0)
 		boomerang_caught_buffer_timer.stop()
+		pause_animation_changes_timer.stop()
 	else:
 		velocity.y = jump_velocity
 		jump_audio.play(0)
@@ -170,6 +171,7 @@ func handle_catch_boost() -> void:
 		boost.play(0)
 		run.stop()
 		jump_audio.stop()
+		pause_animation_changes_timer.stop()
 		
 		var direction: Vector2 = Input.get_vector("left","right","jump","down")
 		if direction == Vector2.ZERO:

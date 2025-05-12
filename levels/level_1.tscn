@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://d06nwwkx80nuh"]
+[gd_scene load_steps=5 format=4 uid="uid://d06nwwkx80nuh"]
 
 [ext_resource type="PackedScene" uid="uid://bcbwtb20kq5uk" path="res://levels/level.tscn" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://dl3hv24wgv7iu" path="res://door/door.tscn" id="3_kx6l7"]
+[ext_resource type="PackedScene" uid="uid://d18mppm3f5iex" path="res://switch/switch.tscn" id="4_n46q3"]
 [ext_resource type="PackedScene" uid="uid://chjoj4wg4weee" path="res://coin_of_death/coin_of_death.tscn" id="6_gwceb"]
 
 [node name="Level1" instance=ExtResource("1_vn7o3")]
@@ -16,3 +18,13 @@ position = Vector2(568, -40)
 
 [node name="CoinOfDeath" parent="Things" index="0" instance=ExtResource("6_gwceb")]
 position = Vector2(88, 40)
+
+[node name="Door" parent="Things" index="1" instance=ExtResource("3_kx6l7")]
+position = Vector2(736, 24)
+rotation = 1.57079
+is_active = false
+
+[node name="Switch" parent="Things" index="2" instance=ExtResource("4_n46q3")]
+position = Vector2(616, -24)
+
+[connection signal="area_entered" from="Things/Switch" to="Things/Door" method="_on_switch_area_entered"]

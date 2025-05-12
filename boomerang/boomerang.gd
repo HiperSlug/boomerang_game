@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 
 func set_state(new_state: STATE) -> void:
 	if new_state == STATE.BACK:
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled",true)
 		var direction: Vector2 = position.direction_to(player.position)
 		velocity = direction * inital_speed_back
 		sprite_2d.play("boost")

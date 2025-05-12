@@ -278,7 +278,7 @@ stream = ExtResource("3_g1dw6")
 pitch_scale = 1.3
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
+process_mode = 1
 stream = ExtResource("3_g1dw6")
 pitch_scale = 0.5
 
