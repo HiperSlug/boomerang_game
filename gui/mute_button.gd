@@ -1,18 +1,19 @@
 extends Button
 
 
+var region_muted: Rect2 = Rect2(16,16,16,16)
+var region_unmuted: Rect2 = Rect2(0,16,16,16) 
 
 func _ready() -> void:
-	if is_inside_tree():
-		 
-		if AudioServer.is_bus_mute(0):
-			text = "m"
-		else:
-			text = "M"
-
-func _pressed() -> void:
-	AudioServer.set_bus_mute(0,not AudioServer.is_bus_mute(0))
 	if AudioServer.is_bus_mute(0):
-		text = "m"
+		icon.region = region_muted
+	else: 
+		icon.region = region_unmuted
+
+
+func _toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(0,toggled_on)
+	if toggled_on:
+		icon.region = region_muted
 	else:
-		text = "M"
+		icon.region = region_unmuted

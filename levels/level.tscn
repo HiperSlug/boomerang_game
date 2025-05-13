@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bcbwtb20kq5uk"]
+[gd_scene load_steps=9 format=4 uid="uid://bcbwtb20kq5uk"]
 
 [ext_resource type="Script" uid="uid://1bjsee6ocm5c" path="res://levels/level.gd" id="1_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://vfcxxb2eickv" path="res://player/player.tscn" id="2_safpt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgavj6askm078" path="res://death_zone/death_zone.tscn" id="4_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://xc4ti64lx8xh" path="res://exit/exit.tscn" id="5_safpt"]
 [ext_resource type="PackedScene" uid="uid://cvccximongwej" path="res://gui/gui.tscn" id="6_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://46kf6flxkbnl" path="res://collectable/collectable.tscn" id="7_vnv7o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n46q3"]
 
@@ -42,3 +43,5 @@ position = Vector2(456, 8)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("6_gjl0y")]
+
+[node name="Collectable" parent="." instance=ExtResource("7_vnv7o")]

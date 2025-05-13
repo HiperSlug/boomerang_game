@@ -10,7 +10,7 @@ var state: STATE = STATE.OUT
 
 @export var inital_speed_out: float = 180
 @export var deceleration_out: float = 200
-@export var inital_speed_back: float = 200
+@export var inital_speed_back: float = 230
 @export var acceleration_back: float = 750
 @export var terminal_return_speed: float = 450
 
@@ -42,9 +42,15 @@ func _input(event: InputEvent) -> void:
 func set_state(new_state: STATE) -> void:
 	if new_state == STATE.BACK:
 		collision_shape_2d.set_deferred("disabled",true)
+		await get_tree().physics_frame
+		await get_tree().physics_frame # it seems to take 2 frames for the collision shape to be disabled.
 		var direction: Vector2 = position.direction_to(player.position)
 		velocity = direction * inital_speed_back
-		sprite_2d.play("boost")
+		#$Sprite2D.modulate = Color.RED
+		#$Recall.play()
+		#var tween: Tween = get_tree().create_tween()
+		#tween.tween_property($Sprite2D,"modulate",Color.WHITE,.2)
+		#sprite_2d.play("boost")
 		long_press_fast_return_timer.start()
 	
 	state = new_state
@@ -54,6 +60,10 @@ func set_state(new_state: STATE) -> void:
 @export var pitch_scale_increase: float = .5 / 3
 @export var slow_return_pitch_scale: float = .8
 func _physics_process(delta: float) -> void:
+	
+	if player_in_range and state != STATE.OUT:
+		player.caught_boomerang()
+		queue_free()
 	
 	if velocity == Vector2.ZERO:
 		spin.pitch_scale += pitch_scale_increase * delta
@@ -86,10 +96,10 @@ func _physics_process(delta: float) -> void:
 		set_state(STATE.BACK)
 
 
+var player_in_range: bool
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player and state != STATE.OUT:
-		body.caught_boomerang()
-		queue_free()
+	if body is Player:
+		player_in_range = true
 
 
 func _on_boomerang_animation_finished() -> void: # only called after boost ends because "spin" loops
@@ -105,5 +115,12 @@ func _on_floating_time_out_timeout() -> void:
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is Player and state == STATE.OUT:
-		set_state(STATE.BACK)
+	if body is Player:
+		player_in_range = false
+		if state == STATE.OUT:
+			
+			set_state(STATE.BACK)
+
+
+func _on_no_collision_starting_timer_timeout() -> void:
+	collision_layer = 8

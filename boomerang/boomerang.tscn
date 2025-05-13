@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgi28hywfxw54"]
+[gd_scene load_steps=16 format=3 uid="uid://cgi28hywfxw54"]
 
-[ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://boomerang/fruit.png" id="1_8p5i4"]
+[ext_resource type="Texture2D" uid="uid://brq4a16xilc1i" path="res://collectable/fruit.png" id="1_8p5i4"]
 [ext_resource type="Script" uid="uid://dumkficpmxp6n" path="res://boomerang/boomerang.gd" id="1_wg8xu"]
+[ext_resource type="Texture2D" uid="uid://d3okripiykp28" path="res://boomerang/boomerang.tres" id="3_rttqd"]
 [ext_resource type="AudioStream" uid="uid://c8s7dlgndyh73" path="res://boomerang/totally_stolen_cappy_sound.mp3" id="4_rttqd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wg8xu"]
-a = Vector2(6, -0.00257385)
-b = Vector2(-6, 0.00257415)
+a = Vector2(12, -0.00514805)
+b = Vector2(-12, 0.00514805)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wg8xu"]
 atlas = ExtResource("1_8p5i4")
@@ -24,21 +25,21 @@ region = Rect2(16, 32, 16, 16)
 atlas = ExtResource("1_8p5i4")
 region = Rect2(16, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i416i"]
-atlas = ExtResource("1_8p5i4")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pj6a1"]
-atlas = ExtResource("1_8p5i4")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w6g3"]
+atlas = ExtResource("3_rttqd")
+region = Rect2(96, 0, 32, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wekyx"]
-atlas = ExtResource("1_8p5i4")
-region = Rect2(0, 32, 16, 16)
+atlas = ExtResource("3_rttqd")
+region = Rect2(64, 0, 32, 4)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8w6g3"]
-atlas = ExtResource("1_8p5i4")
-region = Rect2(0, 48, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6a1"]
+atlas = ExtResource("3_rttqd")
+region = Rect2(32, 0, 32, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i416i"]
+atlas = ExtResource("3_rttqd")
+region = Rect2(0, 0, 32, 4)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_upsmk"]
 animations = [{
@@ -61,67 +62,72 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i416i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pj6a1")
+"texture": SubResource("AtlasTexture_8w6g3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wekyx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8w6g3")
+"texture": SubResource("AtlasTexture_pj6a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i416i")
 }],
 "loop": true,
 "name": &"spin",
-"speed": 5.0
+"speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wg8xu"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rttqd"]
+radius = 8.0
 
 [node name="Boomerang" type="CharacterBody2D"]
-collision_layer = 8
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_wg8xu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-rotation = 0.000429003
 shape = SubResource("SegmentShape2D_wg8xu")
 one_way_collision = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2.5)
 sprite_frames = SubResource("SpriteFrames_upsmk")
-animation = &"boost"
+animation = &"spin"
 autoplay = "spin"
-frame = 3
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_wg8xu")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_rttqd")
 
 [node name="LongPressFastReturnTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
 
-[node name="Spin" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_rttqd")
-pitch_scale = 1.5
-autoplay = true
-attenuation = 25.9921
-
 [node name="FloatingTimeOut" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Spin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rttqd")
+pitch_scale = 1.2
+autoplay = true
+
+[node name="RecallUNUSED" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 1.5
+
+[node name="NoCollisionStartingTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_boomerang_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="LongPressFastReturnTimer" to="." method="_on_long_press_fast_return_timer_timeout"]
 [connection signal="timeout" from="FloatingTimeOut" to="." method="_on_floating_time_out_timeout"]
+[connection signal="timeout" from="NoCollisionStartingTimer" to="." method="_on_no_collision_starting_timer_timeout"]

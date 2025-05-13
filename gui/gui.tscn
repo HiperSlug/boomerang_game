@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvccximongwej"]
+[gd_scene load_steps=9 format=3 uid="uid://cvccximongwej"]
 
 [ext_resource type="Script" uid="uid://dfqxh4qbjksgs" path="res://gui/gui.gd" id="1_p5jaf"]
 [ext_resource type="PackedScene" uid="uid://dlk011o6ucvn8" path="res://gui/mute_button.tscn" id="2_ioifv"]
+[ext_resource type="Texture2D" uid="uid://c5srkv3xqx6bp" path="res://gui/button UI.png" id="2_q46mf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytf3d"]
+atlas = ExtResource("2_q46mf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp187"]
+atlas = ExtResource("2_q46mf")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n360k"]
+atlas = ExtResource("2_q46mf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q46mf"]
+atlas = ExtResource("2_q46mf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk7cs"]
+atlas = ExtResource("2_q46mf")
+region = Rect2(80, 0, 16, 16)
 
 [node name="GUI" type="Control"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +34,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5jaf")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
@@ -40,46 +72,83 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -42.0
+offset_top = -12.0
+offset_right = 42.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="PauseButton" type="Button" parent="PauseMenu/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-focus_neighbor_left = NodePath("../MenueButton")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../LevelSelectButton")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../LevelSelectButton")
-focus_previous = NodePath("../MenueButton")
-theme_override_font_sizes/font_size = 64
-text = "Pause"
-
-[node name="LevelSelectButton" type="Button" parent="PauseMenu/HBoxContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../PauseButton")
+focus_neighbor_left = NodePath("../LevelSelectButton")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../MenueButton")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../MenueButton")
-focus_previous = NodePath("../PauseButton")
+focus_previous = NodePath("../LevelSelectButton")
 theme_override_font_sizes/font_size = 64
-text = "Lvl"
+icon = SubResource("AtlasTexture_ytf3d")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="MenueButton" type="Button" parent="PauseMenu/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-focus_neighbor_left = NodePath("../LevelSelectButton")
+focus_neighbor_left = NodePath("../PauseButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../LevelSelectButton")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../LevelSelectButton")
+focus_previous = NodePath("../PauseButton")
+icon = SubResource("AtlasTexture_hp187")
+flat = true
+expand_icon = true
+
+[node name="LevelSelectButton" type="Button" parent="PauseMenu/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../MenueButton")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../PauseButton")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../PauseButton")
-focus_previous = NodePath("../LevelSelectButton")
-text = "Menu"
+focus_previous = NodePath("../MenueButton")
+theme_override_font_sizes/font_size = 64
+icon = SubResource("AtlasTexture_n360k")
+flat = true
+expand_icon = true
+
+[node name="MuteButton" parent="PauseMenu" instance=ExtResource("2_ioifv")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_right = 0.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="ResetButton2" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_left = 1020.0
+offset_right = 1084.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+icon = SubResource("AtlasTexture_q46mf")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -88,29 +157,43 @@ offset_left = -52.0
 offset_bottom = 24.0
 grow_horizontal = 0
 
-[node name="ResetButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 64
-text = "R"
-flat = true
-icon_alignment = 1
-
 [node name="PauseButton" type="Button" parent="HBoxContainer"]
 process_mode = 3
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 64
-text = "P"
+icon = SubResource("AtlasTexture_bk7cs")
 flat = true
+expand_icon = true
+
+[node name="ResetButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+icon = SubResource("AtlasTexture_q46mf")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="MuteButton" parent="HBoxContainer" instance=ExtResource("2_ioifv")]
 layout_mode = 2
 
+[node name="TimerDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "00:00"
+
 [connection signal="pressed" from="PauseMenu/HBoxContainer/PauseButton" to="." method="unpause"]
-[connection signal="pressed" from="PauseMenu/HBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/MenueButton" to="." method="_on_menue_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ResetButton2" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="pause"]
+[connection signal="pressed" from="HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

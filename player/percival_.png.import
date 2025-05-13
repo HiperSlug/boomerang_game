@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfwqs1nyjgi67"
-path="res://.godot/imported/bubblemad_8x8.png-e6c967696cb613c9792b67cf5a5703e1.ctex"
+uid="uid://cpovjq6stym4i"
+path="res://.godot/imported/percival_.png-4ed9d3e4c7bdedde683a1f83ef4e8d51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bubblemad_8x8.png"
-dest_files=["res://.godot/imported/bubblemad_8x8.png-e6c967696cb613c9792b67cf5a5703e1.ctex"]
+source_file="res://player/percival_.png"
+dest_files=["res://.godot/imported/percival_.png-4ed9d3e4c7bdedde683a1f83ef4e8d51.ctex"]
 
 [params]
 

@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb5m62jxax0vu"]
+[gd_scene load_steps=7 format=3 uid="uid://bb5m62jxax0vu"]
 
 [ext_resource type="Script" uid="uid://bsjd5q8feq0to" path="res://level_select/level_select.gd" id="1_kxnyd"]
 [ext_resource type="PackedScene" uid="uid://tbemk5ka72tb" path="res://level_select/level_select_button.tscn" id="1_sv8in"]
 [ext_resource type="PackedScene" uid="uid://d06nwwkx80nuh" path="res://levels/level_1.tscn" id="2_kxnyd"]
+[ext_resource type="Texture2D" uid="uid://c5srkv3xqx6bp" path="res://gui/button UI.png" id="4_kp0lh"]
+[ext_resource type="PackedScene" uid="uid://dlk011o6ucvn8" path="res://gui/mute_button.tscn" id="5_mtmfa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtmfa"]
+atlas = ExtResource("4_kp0lh")
+region = Rect2(48, 32, 16, 16)
 
 [node name="LevelSelect" type="Control"]
 process_mode = 3
@@ -30,86 +36,114 @@ grow_vertical = 2
 columns = 5
 
 [node name="LevelSelectButton" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "1"
 level_scene = ExtResource("2_kxnyd")
 
 [node name="LevelSelectButton2" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "2"
 
 [node name="LevelSelectButton3" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "3"
 
 [node name="LevelSelectButton4" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "4"
 
 [node name="LevelSelectButton5" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "5"
 
 [node name="LevelSelectButton6" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "6"
 
 [node name="LevelSelectButton7" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "7"
 
 [node name="LevelSelectButton8" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "8"
 
 [node name="LevelSelectButton9" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "9"
 
 [node name="LevelSelectButton10" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "10"
 
 [node name="LevelSelectButton11" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "11"
 
 [node name="LevelSelectButton12" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "12"
 
 [node name="LevelSelectButton13" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "13"
 
 [node name="LevelSelectButton14" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "14"
 
 [node name="LevelSelectButton15" parent="GridContainer" instance=ExtResource("1_sv8in")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "15"
 
 [node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 64
-text = "BACK"
+icon = SubResource("AtlasTexture_mtmfa")
+flat = true
+expand_icon = true
+
+[node name="MuteButton" parent="." instance=ExtResource("5_mtmfa")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_right = 0.0
+offset_bottom = 64.0
+grow_horizontal = 0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
