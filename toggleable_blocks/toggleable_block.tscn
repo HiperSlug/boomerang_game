@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl3hv24wgv7iu"]
 
-[ext_resource type="Script" uid="uid://s34mxkw1e4y6" path="res://door/toggleable_object.gd" id="1_rdd60"]
-[ext_resource type="Texture2D" uid="uid://clmrk5blq7d0q" path="res://door/Idle.png" id="2_52g7u"]
+[ext_resource type="Script" uid="uid://s34mxkw1e4y6" path="res://toggleable_blocks/toggleable_object.gd" id="1_p4m1u"]
+[ext_resource type="Texture2D" uid="uid://clmrk5blq7d0q" path="res://toggleable_blocks/Idle.png" id="2_p4m1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppnon"]
 size = Vector2(16, 16)
 
 [node name="ToggleableBlock" type="StaticBody2D"]
 collision_mask = 0
-script = ExtResource("1_rdd60")
+script = ExtResource("1_p4m1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ppnon")
@@ -16,4 +16,4 @@ shape = SubResource("RectangleShape2D_ppnon")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.38419e-07, 5.96046e-08)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_52g7u")
+texture = ExtResource("2_p4m1u")

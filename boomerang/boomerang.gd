@@ -8,13 +8,13 @@ enum STATE {
 }
 var state: STATE = STATE.OUT
 
-@export var inital_speed_out: float = 180
+@export var inital_speed_out: float = 210
 @export var deceleration_out: float = 200
-@export var inital_speed_back: float = 230
-@export var acceleration_back: float = 750
-@export var terminal_return_speed: float = 450
+@export var inital_speed_back: float = 150
+@export var acceleration_back: float = 600
+@export var terminal_return_speed: float = 400
 
-@export var very_fast_but_not_instant_teleport_speed: float = 1500
+@export var very_fast_but_not_instant_teleport_speed: float = 1000
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity == Vector2.ZERO:
 		spin.pitch_scale += pitch_scale_increase * delta
+		$Sprite2D.speed_scale += pitch_scale_increase * delta
 	else:
 		floating_time_out.start()
 	
@@ -119,8 +120,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player_in_range = false
 		if state == STATE.OUT:
 			
-			set_state(STATE.BACK)
+			$WaitTimeBeforeTeleport.start()
 
 
 func _on_no_collision_starting_timer_timeout() -> void:
 	collision_layer = 8
+
+
+func _on_wait_time_before_teleport_timeout() -> void:
+	if not player_in_range:
+		set_state(STATE.TELEPORT)

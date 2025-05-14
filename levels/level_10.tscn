@@ -1,0 +1,250 @@
+[gd_scene load_steps=5 format=4 uid="uid://ce52tuheq2bg4"]
+
+[ext_resource type="PackedScene" uid="uid://bcbwtb20kq5uk" path="res://levels/level.tscn" id="1_tghxx"]
+[ext_resource type="PackedScene" uid="uid://duxp0yslrlduq" path="res://toggleable_blocks/block_group.tscn" id="2_b1vqp"]
+[ext_resource type="PackedScene" uid="uid://dl3hv24wgv7iu" path="res://toggleable_blocks/toggleable_block.tscn" id="3_eoivg"]
+[ext_resource type="PackedScene" uid="uid://d18mppm3f5iex" path="res://switch/switch.tscn" id="4_eoivg"]
+
+[node name="Level10" instance=ExtResource("1_tghxx")]
+
+[node name="Foreground" parent="." index="1"]
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAABAAQAAAAAAAEAAAAAAAQAAAAAAAEAAAD//wQAAAAAAAEAAAD//wMAAAAAAAEAAAD9/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAABAAIAAAAAAAEAAAAAAAIAAAAAAAEAAAD//wIAAAAAAAEAAAAAAAMAAAAAAAEAAAABAAMAAAAAAAEAAAACAAIAAAAAAAEAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAALAAQAAAAAAAEAAAAMAAQAAAAAAAEAAAANAAQAAAAAAAEAAAAOAAQAAAAAAAEAAAAPAAQAAAAAAAEAAAARAAIAAAAAAAEAAAAQAAIAAAAAAAEAAAAQAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAOAPj/AAAAAAEAAAAPAPj/AAAAAAEAAAAQAPj/AAAAAAEAAAAQAPn/AAAAAAEAAAAVAP3/AAAAAAAAAAAWAP7/AAAAAAEAAAAXAP7/AAAAAAEAAAAXAP//AAAAAAEAAAAYAAAAAAAAAAEAAAAYAAEAAAAAAAEAAAAZAAIAAAAAAAEAAAAZAAMAAAAAAAEAAAAZAAQAAAAAAAEAAAAZAAUAAAAAAAEAAAAZAAYAAAAAAAEAAAAZAAcAAAAAAAEAAAAZAAgAAAAAAAEAAAAYAAkAAAAAAAEAAAAYAAoAAAAAAAEAAAARAPn/AAAAAAEAAAASAPn/AAAAAAEAAAATAPn/AAAAAAEAAAAUAPn/AAAAAAEAAAAVAPn/AAAAAAEAAAAWAPn/AAAAAAEAAAAXAPn/AAAAAAEAAAAWAP3/AAAAAAAAAAAXAP3/AAAAAAAAAAAYAP3/AAAAAAAAAAAZAP3/AAAAAAAAAAAZAP7/AAAAAAEAAAAaAP7/AAAAAAAAAAAbAP7/AAAAAAAAAAAbAP//AAAAAAEAAAAcAP//AAAAAAAAAAAdAAAAAAAAAAAAAAAeAAEAAAAAAAAAAAAeAAIAAAAAAAEAAAAfAAMAAAAAAAAAAAAfAAQAAAAAAAEAAAAfAAUAAAAAAAEAAAAfAAYAAAAAAAEAAAAfAAcAAAAAAAEAAAAfAAgAAAAAAAEAAAAfAAkAAAAAAAEAAAAfAAoAAAAAAAEAAAAYAPn/AAAAAAEAAAAZAPn/AAAAAAEAAAAaAPn/AAAAAAEAAAAbAPj/AAAAAAEAAAAcAPj/AAAAAAEAAAAoAPv/AAAAAAAAAAAlAAQAAAAAAAAAAAAuAAEAAAAAAAAAAAA1AP7/AAAAAAEAAAA1AP//AAAAAAEAAAA2AAAAAAAAAAEAAAA2AAEAAAAAAAEAAAA3AAIAAAAAAAEAAAA3AAMAAAAAAAEAAAA4AAMAAAAAAAEAAAA4AAQAAAAAAAEAAAA5AAUAAAAAAAEAAAA2AP3/AAAAAAAAAAA3AP3/AAAAAAAAAAA4AP3/AAAAAAAAAAA5AP3/AAAAAAAAAAA6AP3/AAAAAAAAAAA7AP3/AAAAAAAAAAA8AP7/AAAAAAEAAAA9AP7/AAAAAAEAAAA+AP//AAAAAAEAAAA+AAAAAAAAAAEAAAA+AAEAAAAAAAEAAAA+AAIAAAAAAAEAAAA9AAMAAAAAAAEAAAA8AAMAAAAAAAEAAAA8AAQAAAAAAAEAAAA7AAQAAAAAAAEAAAA6AAQAAAAAAAEAAAA6AAUAAAAAAAEAAAA8AP3/AAAAAAAAAAA9AP3/AAAAAAAAAAA+AP3/AAAAAAAAAAA/AP3/AAAAAAAAAAA+AP7/AAAAAAEAAAA/AP7/AAAAAAEAAAA/AP//AAAAAAEAAAA/AAAAAAAAAAEAAAA1AP3/AAAAAAAAAAA0AP7/AAAAAAAAAAA0AP//AAAAAAEAAAA0AAAAAAAAAAEAAAA0AAEAAAAAAAEAAAA1AAEAAAAAAAEAAAA1AAIAAAAAAAEAAAA1AAAAAAAAAAEAAAA2AAIAAAAAAAEAAAA3AAQAAAAAAAEAAAA1AAMAAAAAAAEAAAA2AAMAAAAAAAEAAAA2AAQAAAAAAAEAAAA3AAUAAAAAAAEAAAA4AAUAAAAAAAEAAAA7AAUAAAAAAAEAAAA/AAEAAAAAAAEAAAA5AAYAAAAAAAEAAAA6AAYAAAAAAAEAAAAcAAQAAAAAAAEAAAAcAAMAAAAAAAEAAAAcAAIAAAAAAAEAAAAcAAEAAAAAAAEAAAAcAAAAAAAAAAEAAAAbAAAAAAAAAAEAAAAaAAAAAAAAAAEAAAAaAP//AAAAAAEAAAAZAP//AAAAAAEAAAAYAP//AAAAAAEAAAAYAP7/AAAAAAEAAAAZAAAAAAAAAAEAAAAZAAEAAAAAAAEAAAAaAAEAAAAAAAEAAAAaAAIAAAAAAAEAAAAaAAMAAAAAAAEAAAAaAAQAAAAAAAEAAAAaAAUAAAAAAAEAAAAaAAYAAAAAAAEAAAAaAAcAAAAAAAEAAAAaAAgAAAAAAAEAAAAaAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAZAAoAAAAAAAEAAAAaAAoAAAAAAAEAAAAbAAoAAAAAAAEAAAAbAAkAAAAAAAEAAAAbAAgAAAAAAAEAAAAbAAcAAAAAAAEAAAAbAAYAAAAAAAEAAAAbAAUAAAAAAAEAAAAbAAQAAAAAAAEAAAAbAAMAAAAAAAEAAAAbAAIAAAAAAAEAAAAbAAEAAAAAAAEAAAAcAAUAAAAAAAEAAAAcAAYAAAAAAAEAAAAcAAcAAAAAAAEAAAAcAAgAAAAAAAEAAAAcAAkAAAAAAAEAAAAcAAoAAAAAAAEAAAAdAAoAAAAAAAEAAAAdAAkAAAAAAAEAAAAdAAgAAAAAAAEAAAAdAAcAAAAAAAEAAAAdAAYAAAAAAAEAAAAdAAUAAAAAAAEAAAAdAAQAAAAAAAEAAAAdAAMAAAAAAAEAAAAdAAIAAAAAAAEAAAAdAAEAAAAAAAEAAAAeAAMAAAAAAAEAAAAeAAQAAAAAAAEAAAAeAAUAAAAAAAEAAAAeAAYAAAAAAAEAAAAeAAcAAAAAAAEAAAAeAAgAAAAAAAEAAAAeAAkAAAAAAAEAAAAeAAoAAAAAAAEAAAA7AP//AAAAAAEAAAA7AP7/AAAAAAEAAAA6AP7/AAAAAAEAAAA5AP7/AAAAAAEAAAA4AP7/AAAAAAEAAAA3AP7/AAAAAAEAAAA2AP7/AAAAAAEAAAA2AP//AAAAAAEAAAA3AP//AAAAAAEAAAA3AAAAAAAAAAEAAAA3AAEAAAAAAAEAAAA4AAEAAAAAAAEAAAA4AAAAAAAAAAEAAAA4AP//AAAAAAEAAAA5AP//AAAAAAEAAAA5AAAAAAAAAAEAAAA5AAEAAAAAAAEAAAA5AAIAAAAAAAEAAAA4AAIAAAAAAAEAAAA5AAMAAAAAAAEAAAA5AAQAAAAAAAEAAAA6AAMAAAAAAAEAAAA6AAIAAAAAAAEAAAA6AAEAAAAAAAEAAAA6AAAAAAAAAAEAAAA6AP//AAAAAAEAAAA7AAAAAAAAAAEAAAA7AAEAAAAAAAEAAAA7AAIAAAAAAAEAAAA7AAMAAAAAAAEAAAA8AAIAAAAAAAEAAAA8AAEAAAAAAAEAAAA8AAAAAAAAAAEAAAA8AP//AAAAAAEAAAA9AP//AAAAAAEAAAA9AAAAAAAAAAEAAAA9AAEAAAAAAAEAAAA9AAIAAAAAAAEAAAARAPj/AAAAAAEAAAASAPj/AAAAAAEAAAATAPj/AAAAAAEAAAAUAPj/AAAAAAEAAAAVAPj/AAAAAAEAAAAWAPj/AAAAAAEAAAAXAPj/AAAAAAEAAAAYAPj/AAAAAAEAAAAZAPj/AAAAAAEAAAAaAPj/AAAAAAEAAAAPAAIAAAAAAAEAAAAMAAMAAAAAAAEAAAAJAAMAAAAAAAEAAAAKAAMAAAAAAAEAAAAKAAQAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAUAAAAAAAEAAAANAAUAAAAAAAEAAAAOAAUAAAAAAAEAAAAPAAUAAAAAAAEAAAAQAAQAAAAAAAEAAAARAAQAAAAAAAEAAAARAAMAAAAAAAEAAAASAAIAAAAAAAAAAAASAAMAAAAAAAEAAAADAAIAAAAAAAEAAAACAAMAAAAAAAEAAABMAP3/AAAAAAAAAABLAP3/AAAAAAAAAABKAP3/AAAAAAAAAABJAP3/AAAAAAAAAABJAP7/AAAAAAEAAABKAP7/AAAAAAEAAABLAP7/AAAAAAEAAABMAP7/AAAAAAEAAABNAP7/AAAAAAAAAABOAP7/AAAAAAAAAABPAP7/AAAAAAAAAABQAP7/AAAAAAEAAABQAP3/AAAAAAAAAABRAP3/AAAAAAAAAABSAP3/AAAAAAAAAABTAP3/AAAAAAAAAABUAP3/AAAAAAAAAABRAP7/AAAAAAEAAABSAP7/AAAAAAEAAABTAP7/AAAAAAEAAABUAP7/AAAAAAEAAABTAP//AAAAAAEAAABSAP//AAAAAAEAAABRAP//AAAAAAEAAABQAP//AAAAAAEAAABQAAAAAAAAAAEAAABPAAAAAAAAAAEAAABOAAAAAAAAAAEAAABMAP//AAAAAAEAAABNAP//AAAAAAEAAABOAP//AAAAAAEAAABPAP//AAAAAAEAAABLAP//AAAAAAEAAABKAP//AAAAAAEAAABNAAAAAAAAAAEAAABMAAAAAAAAAAEAAABLAAAAAAAAAAEAAABKAAAAAAAAAAEAAABOAAEAAAAAAAEAAABPAAEAAAAAAAEAAABQAAEAAAAAAAEAAABRAAEAAAAAAAEAAABQAAIAAAAAAAEAAABPAAIAAAAAAAEAAABRAAAAAAAAAAEAAABOAAIAAAAAAAEAAABNAAIAAAAAAAEAAABMAAEAAAAAAAEAAABNAAEAAAAAAAEAAAAtAAEAAAAAAAAAAAAvAAEAAAAAAAAAAAAnAPv/AAAAAAAAAAApAPv/AAAAAAAAAAAmAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAkAAUAAAAAAAEAAAAlAAUAAAAAAAEAAAAuAAIAAAAAAAEAAAAvAAIAAAAAAAEAAAAoAPz/AAAAAAEAAAAXAAoAAAAAAAEAAAAWAAoAAAAAAAEAAAAVAAoAAAAAAAEAAAAXAAkAAAAAAAEAAAATAAoAAAAAAAEAAAAUAAoAAAAAAAEAAAA=")
+
+[node name="Player" parent="." index="2"]
+position = Vector2(-8, 8)
+
+[node name="Exit" parent="." index="4"]
+position = Vector2(920, -56)
+level_int = 10
+
+[node name="BlockGroup" parent="Things" index="0" instance=ExtResource("2_b1vqp")]
+position = Vector2(0, -16)
+
+[node name="ToggleableBlock" parent="Things/BlockGroup" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(280, -24)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(264, -24)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(264, -40)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(264, -56)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(296, -24)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup" index="5" instance=ExtResource("3_eoivg")]
+position = Vector2(312, -24)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup" index="6" instance=ExtResource("3_eoivg")]
+position = Vector2(328, -24)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup" index="7" instance=ExtResource("3_eoivg")]
+position = Vector2(264, -72)
+
+[node name="Switch" parent="Things" index="1" instance=ExtResource("4_eoivg")]
+position = Vector2(216, 32)
+rotation = -3.14159
+
+[node name="Switch2" parent="Things" index="2" instance=ExtResource("4_eoivg")]
+position = Vector2(648, -80)
+
+[node name="Switch4" parent="Things" index="3" instance=ExtResource("4_eoivg")]
+position = Vector2(600, 64)
+
+[node name="Switch5" parent="Things" index="4" instance=ExtResource("4_eoivg")]
+position = Vector2(744, 16)
+
+[node name="BlockGroup2" parent="Things" index="5" instance=ExtResource("2_b1vqp")]
+
+[node name="ToggleableBlock" parent="Things/BlockGroup2" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup2" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -72)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup2" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -88)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup2" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -104)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup2" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -104)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup2" index="5" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -104)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup2" index="6" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -104)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup2" index="7" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -104)
+
+[node name="ToggleableBlock9" parent="Things/BlockGroup2" index="8" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -88)
+
+[node name="ToggleableBlock13" parent="Things/BlockGroup2" index="9" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -104)
+
+[node name="ToggleableBlock12" parent="Things/BlockGroup2" index="10" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -104)
+
+[node name="ToggleableBlock10" parent="Things/BlockGroup2" index="11" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -72)
+
+[node name="ToggleableBlock11" parent="Things/BlockGroup2" index="12" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -56)
+
+[node name="BlockGroup3" parent="Things" index="6" instance=ExtResource("2_b1vqp")]
+
+[node name="ToggleableBlock" parent="Things/BlockGroup3" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup3" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -72)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup3" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -88)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup3" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -88)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup3" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -88)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup3" index="5" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -88)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup3" index="6" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -88)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup3" index="7" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -72)
+
+[node name="ToggleableBlock9" parent="Things/BlockGroup3" index="8" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -56)
+
+[node name="BlockGroup4" parent="Things" index="7" instance=ExtResource("2_b1vqp")]
+
+[node name="ToggleableBlock" parent="Things/BlockGroup4" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -56)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup4" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -72)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup4" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -72)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup4" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup4" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -72)
+
+[node name="BlockGroup5" parent="Things" index="8" instance=ExtResource("2_b1vqp")]
+position = Vector2(328, 0)
+start_toggled = true
+
+[node name="ToggleableBlock" parent="Things/BlockGroup5" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup5" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -72)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup5" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -88)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup5" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(872, -104)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup5" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -104)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup5" index="5" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -104)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup5" index="6" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -104)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup5" index="7" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -104)
+
+[node name="ToggleableBlock9" parent="Things/BlockGroup5" index="8" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -88)
+
+[node name="ToggleableBlock13" parent="Things/BlockGroup5" index="9" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -104)
+
+[node name="ToggleableBlock12" parent="Things/BlockGroup5" index="10" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -104)
+
+[node name="ToggleableBlock10" parent="Things/BlockGroup5" index="11" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -72)
+
+[node name="ToggleableBlock11" parent="Things/BlockGroup5" index="12" instance=ExtResource("3_eoivg")]
+position = Vector2(968, -56)
+
+[node name="BlockGroup6" parent="Things" index="9" instance=ExtResource("2_b1vqp")]
+position = Vector2(328, 0)
+start_toggled = true
+
+[node name="ToggleableBlock" parent="Things/BlockGroup6" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup6" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -72)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup6" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(888, -88)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup6" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -88)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup6" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -88)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup6" index="5" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -88)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup6" index="6" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -88)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup6" index="7" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -72)
+
+[node name="ToggleableBlock9" parent="Things/BlockGroup6" index="8" instance=ExtResource("3_eoivg")]
+position = Vector2(952, -56)
+
+[node name="BlockGroup7" parent="Things" index="10" instance=ExtResource("2_b1vqp")]
+position = Vector2(328, 0)
+start_toggled = true
+
+[node name="ToggleableBlock" parent="Things/BlockGroup7" index="0" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -56)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup7" index="1" instance=ExtResource("3_eoivg")]
+position = Vector2(920, -72)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup7" index="2" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -72)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup7" index="3" instance=ExtResource("3_eoivg")]
+position = Vector2(936, -56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup7" index="4" instance=ExtResource("3_eoivg")]
+position = Vector2(904, -72)
+
+[node name="Collectable" parent="." index="7"]
+position = Vector2(1248, -48)
+level_number = 10
+
+[connection signal="area_entered" from="Things/Switch" to="Things/BlockGroup" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch2" to="Things/BlockGroup2" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch2" to="Things/BlockGroup5" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch4" to="Things/BlockGroup3" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch4" to="Things/BlockGroup6" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch5" to="Things/BlockGroup4" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch5" to="Things/BlockGroup7" method="_on_switch_area_entered"]

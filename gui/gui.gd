@@ -40,7 +40,7 @@ func _ready() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect2,"color:a",0,.2)
 
-func exit(level_int: int) -> void:
+func exit(_level_int: int) -> void:
 	pause_menu.visible = false
 	h_box_container.visible = false
 	$ColorRect2.visible = true

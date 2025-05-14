@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://brduc4fff026p"]
+
+[ext_resource type="PackedScene" uid="uid://bgavj6askm078" path="res://death_zone/death_zone.tscn" id="1_jhskg"]
+[ext_resource type="Texture2D" uid="uid://cb1y2nbe22o0y" path="res://spikes/Idle.png" id="2_vktsv"]
+
+[node name="Spikes" instance=ExtResource("1_jhskg")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-8, 8, -5, 2, 4, 2, 7, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_vktsv")

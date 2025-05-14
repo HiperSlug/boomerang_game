@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=4 uid="uid://b3f6tqdavubti"]
+
+[ext_resource type="PackedScene" uid="uid://bcbwtb20kq5uk" path="res://levels/level.tscn" id="1_2b88s"]
+[ext_resource type="PackedScene" uid="uid://d1dyi17g633ki" path="res://levels/level_9.tscn" id="2_4kux0"]
+[ext_resource type="PackedScene" uid="uid://duxp0yslrlduq" path="res://toggleable_blocks/block_group.tscn" id="2_rmft0"]
+[ext_resource type="PackedScene" uid="uid://dl3hv24wgv7iu" path="res://toggleable_blocks/toggleable_block.tscn" id="3_4kux0"]
+[ext_resource type="PackedScene" uid="uid://d18mppm3f5iex" path="res://switch/switch.tscn" id="4_fxq3v"]
+
+[node name="Level8" instance=ExtResource("1_2b88s")]
+
+[node name="Foreground" parent="." index="1"]
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAALAP3/AAAAAAAAAAAMAP3/AAAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAEAAAASAAAAAAAAAAEAAAASAAEAAAAAAAEAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAEAAAAKAP//AAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAALAAEAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAMAAAAAAAEAAAAOAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAEAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAD//wMAAAAAAAEAAAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAAAAAEAAAADAAMAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAEAAAAAAAAAAAANAAEAAAAAAAEAAAANAAAAAAAAAAEAAAANAP//AAAAAAEAAAANAP7/AAAAAAEAAAAOAP7/AAAAAAEAAAAPAP7/AAAAAAEAAAAQAP7/AAAAAAEAAAARAP7/AAAAAAEAAAARAP//AAAAAAEAAAARAAAAAAAAAAEAAAARAAEAAAAAAAEAAAAQAAEAAAAAAAEAAAAPAAEAAAAAAAEAAAAOAAEAAAAAAAEAAAABAAMAAAAAAAEAAAABAAIAAAAAAAEAAAAAAAIAAAAAAAEAAAD//wIAAAAAAAEAAAAAAAMAAAAAAAEAAAACAAIAAAAAAAEAAAACAAMAAAAAAAEAAAAMAAAAAAAAAAEAAAAMAP//AAAAAAEAAAAMAP7/AAAAAAEAAAALAP7/AAAAAAEAAAALAP//AAAAAAEAAAALAAAAAAAAAAEAAAAMAAEAAAAAAAEAAAAOAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAPAAIAAAAAAAEAAAAcAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAQAAAAAAAEAAAAWAAQAAAAAAAAAAAAXAAUAAAAAAAEAAAAXAAYAAAAAAAEAAAAYAAYAAAAAAAEAAAAYAAUAAAAAAAEAAAAYAAQAAAAAAAEAAAAZAAQAAAAAAAEAAAAZAAUAAAAAAAEAAAAZAAYAAAAAAAEAAAAZAAcAAAAAAAEAAAAYAAcAAAAAAAEAAAAaAAcAAAAAAAEAAAAaAAYAAAAAAAEAAAAaAAUAAAAAAAEAAAAaAAQAAAAAAAEAAAAbAAQAAAAAAAEAAAAbAAUAAAAAAAEAAAAbAAYAAAAAAAEAAAAbAAcAAAAAAAEAAAAcAAcAAAAAAAEAAAAcAAYAAAAAAAEAAAAcAAUAAAAAAAEAAAAcAAQAAAAAAAEAAAAdAAYAAAAAAAEAAAAdAAcAAAAAAAEAAAAeAAcAAAAAAAEAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAfAAcAAAAAAAEAAAAgAAcAAAAAAAEAAAAgAAYAAAAAAAAAAAAiAAMAAAAAAAAAAAAiAAQAAAAAAAEAAAAiAAUAAAAAAAEAAAAhAAYAAAAAAAEAAAAiAAYAAAAAAAEAAAAjAAYAAAAAAAEAAAAjAAUAAAAAAAEAAAAjAAQAAAAAAAEAAAAjAAMAAAAAAAAAAAAkAAMAAAAAAAAAAAAkAAQAAAAAAAEAAAAkAAUAAAAAAAEAAAAdAAUAAAAAAAAAAAAhAAUAAAAAAAAAAAA=")
+
+[node name="Player" parent="." index="2"]
+position = Vector2(8, 8)
+
+[node name="Exit" parent="." index="4"]
+position = Vector2(520, 40)
+next_level = ExtResource("2_4kux0")
+level_int = 8
+
+[node name="BlockGroup" parent="Things" index="0" instance=ExtResource("2_rmft0")]
+
+[node name="ToggleableBlock" parent="Things/BlockGroup" index="0" instance=ExtResource("3_4kux0")]
+position = Vector2(472, 24)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup" index="1" instance=ExtResource("3_4kux0")]
+position = Vector2(472, 40)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup" index="2" instance=ExtResource("3_4kux0")]
+position = Vector2(472, 8)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup" index="3" instance=ExtResource("3_4kux0")]
+position = Vector2(488, 8)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup" index="4" instance=ExtResource("3_4kux0")]
+position = Vector2(504, 8)
+
+[node name="ToggleableBlock6" parent="Things/BlockGroup" index="5" instance=ExtResource("3_4kux0")]
+position = Vector2(520, 8)
+
+[node name="ToggleableBlock7" parent="Things/BlockGroup" index="6" instance=ExtResource("3_4kux0")]
+position = Vector2(536, 8)
+
+[node name="ToggleableBlock8" parent="Things/BlockGroup" index="7" instance=ExtResource("3_4kux0")]
+position = Vector2(536, 24)
+
+[node name="ToggleableBlock9" parent="Things/BlockGroup" index="8" instance=ExtResource("3_4kux0")]
+position = Vector2(536, 40)
+
+[node name="Switch" parent="Things" index="1" instance=ExtResource("4_fxq3v")]
+position = Vector2(248, -16)
+rotation = 3.14159
+
+[node name="BlockGroup2" parent="Things" index="2" instance=ExtResource("2_rmft0")]
+start_toggled = true
+
+[node name="ToggleableBlock" parent="Things/BlockGroup2" index="0" instance=ExtResource("3_4kux0")]
+position = Vector2(472, 56)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup2" index="1" instance=ExtResource("3_4kux0")]
+position = Vector2(488, 56)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup2" index="2" instance=ExtResource("3_4kux0")]
+position = Vector2(504, 56)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup2" index="3" instance=ExtResource("3_4kux0")]
+position = Vector2(520, 56)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup2" index="4" instance=ExtResource("3_4kux0")]
+position = Vector2(536, 56)
+
+[node name="Label" type="Label" parent="Things" index="3"]
+offset_left = -96.0
+offset_top = -24.0
+offset_right = 156.0
+offset_bottom = -11.0
+text = "Returning BOOMERANGs can go through walls."
+
+[node name="Collectable" parent="." index="7"]
+position = Vector2(504, 80)
+level_number = 8
+
+[connection signal="area_entered" from="Things/Switch" to="Things/BlockGroup" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch" to="Things/BlockGroup2" method="_on_switch_area_entered"]

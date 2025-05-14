@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkjqs0gqf52pr"
-path="res://.godot/imported/knight.png-708266efadfecae8e171a09210f1058d.ctex"
+uid="uid://biyjurss6i57b"
+path="res://.godot/imported/Purple_To_Yellow.png-74d4ee1af1f764c97cf1930ef9cc4004.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/knight.png"
-dest_files=["res://.godot/imported/knight.png-708266efadfecae8e171a09210f1058d.ctex"]
+source_file="res://switch/Purple_To_Yellow.png"
+dest_files=["res://.godot/imported/Purple_To_Yellow.png-74d4ee1af1f764c97cf1930ef9cc4004.ctex"]
 
 [params]
 

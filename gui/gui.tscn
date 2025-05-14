@@ -90,6 +90,7 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../MenueButton")
 focus_previous = NodePath("../LevelSelectButton")
 theme_override_font_sizes/font_size = 64
+action_mode = 0
 icon = SubResource("AtlasTexture_ytf3d")
 flat = true
 icon_alignment = 1

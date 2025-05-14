@@ -6,6 +6,10 @@ var total_level_count: int = 15
 var gotten_collectables: Array
 var completed_levels: Array
 
+func delete_data() -> void:
+	new_data()
+	save_data()
+
 func set_level_collectable_as_gotten(level_number: int) -> void:
 	gotten_collectables[level_number - 1] = true
 	save_data()
@@ -16,7 +20,7 @@ func set_level_completed(level_number: int) -> void:
 
 func _ready() -> void:
 	new_data()
-	#load_data() # enable when actually playing
+	load_data() # enable when actually playing
 	SignalBus.exit.connect(set_level_completed)
 
 func save_data() -> void:
@@ -26,12 +30,11 @@ func save_data() -> void:
 	var json_completion = JSON.stringify(gotten_collectables)
 	save_file.store_line(json_completion)
 	
-	print(completed_levels)
-	print(gotten_collectables)
+	#print(completed_levels)
+	#print(gotten_collectables)
 
 func load_data() -> void:
 	if not FileAccess.file_exists("user://save_file.save"):
-		new_data()
 		return
 	
 	var save_file: FileAccess = FileAccess.open("user://save_file.save", FileAccess.READ)

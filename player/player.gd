@@ -214,8 +214,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("throw"):
 		if has_boomerang:
-			#if can_throw_boomerang:
-			throw_boomerang()
+			if can_throw_boomerang:
+				throw_boomerang()
 
 
 var run_sound_variance: float = .1
