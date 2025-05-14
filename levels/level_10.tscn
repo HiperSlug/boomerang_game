@@ -14,7 +14,7 @@ tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAA
 position = Vector2(-8, 8)
 
 [node name="Exit" parent="." index="4"]
-position = Vector2(920, -56)
+position = Vector2(72, 8)
 level_int = 10
 
 [node name="BlockGroup" parent="Things" index="0" instance=ExtResource("2_b1vqp")]

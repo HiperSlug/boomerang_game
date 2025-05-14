@@ -3,10 +3,11 @@ extends Control
 
 
 
-@onready var start: int = Time.get_ticks_msec()
+
 @onready var timer_display: Label = $TimerDisplay
 func update_time() -> void:
-	var delta_since_start_msec: int = Time.get_ticks_msec()  - start
+	var delta_since_start_msec: int = SpeedrunTimer.get_level_time()
+	time_elapsed = delta_since_start_msec
 	@warning_ignore("integer_division")
 	var minutes: int = floori(delta_since_start_msec / 60000) % 60
 	@warning_ignore("integer_division")
@@ -28,10 +29,15 @@ func update_time() -> void:
 	var time: String = minutes_str + ":" + seconds_str + ":" + miliseconds_str
 	timer_display.text = time
 
+var updating_time: bool = true
+var time_elapsed: int = 0
+
 func _physics_process(_delta: float) -> void:
-	update_time()
+	if updating_time:
+		update_time()
 
 func _ready() -> void:
+	#SpeedrunTimer.start_level_timer()
 	visible = true
 	unpause()
 	SignalBus.exit.connect(exit)
@@ -39,13 +45,17 @@ func _ready() -> void:
 	$ColorRect2.visible = true
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect2,"color:a",0,.2)
+	updating_time = SpeedrunTimer.is_speedrunning
+	$TimerDisplay.visible = SpeedrunTimer.is_speedrunning
 
-func exit(_level_int: int) -> void:
+func exit(_level_int: int, _time_elapsed: float) -> void:
 	pause_menu.visible = false
 	h_box_container.visible = false
 	$ColorRect2.visible = true
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property($ColorRect2,"color:a",1,.2)
+	updating_time = false
+	if get_tree() != null:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property($ColorRect2,"color:a",1,.2)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -71,11 +81,13 @@ func unpause() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	get_tree().paused = false
+	SpeedrunTimer.end_speedrun_early()
 	get_tree().call_deferred("change_scene_to_file","res://level_select/level_select.tscn")
 
 
 func _on_menue_button_pressed() -> void:
 	get_tree().paused = false
+	SpeedrunTimer.end_speedrun_early()
 	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 
 func _on_reset_button_pressed() -> void:

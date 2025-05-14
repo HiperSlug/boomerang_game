@@ -14,7 +14,7 @@ func set_level_collectable_as_gotten(level_number: int) -> void:
 	gotten_collectables[level_number - 1] = true
 	save_data()
 
-func set_level_completed(level_number: int) -> void:
+func set_level_completed(level_number: int, _time_elapsed: float) -> void:
 	completed_levels[level_number] = true
 	save_data()
 

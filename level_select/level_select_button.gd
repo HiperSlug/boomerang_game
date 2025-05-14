@@ -20,8 +20,8 @@ func _ready() -> void:
 		if is_last_level_completed:
 			disabled = false
 		else:
-			#pass
-			disabled = true
+			pass
+			#disabled = true
 	
 	var is_collectable_gotten: bool = SaveData.gotten_collectables[level_int - 1]
 	if is_collectable_gotten:

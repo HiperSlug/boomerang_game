@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://globals/signal_bus.gd"
 SaveData="*res://globals/save_data.gd"
+SpeedrunTimer="*res://globals/speedrun_timer.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [global_group]
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp7i7woem4qd5"]
+
+[ext_resource type="PackedScene" uid="uid://bcbwtb20kq5uk" path="res://levels/level.tscn" id="1_kvqw7"]
+
+[node name="Level11" instance=ExtResource("1_kvqw7")]
+
+[node name="Exit" parent="." index="4"]
+level_int = 11
+
+[node name="Collectable" parent="." index="7"]
+level_number = 11
