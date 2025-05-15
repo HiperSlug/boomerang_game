@@ -105,90 +105,90 @@ texture = SubResource("AtlasTexture_ia84y")
 [node name="TextureRect14" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 530.39
+offset_left = 532.0
 offset_top = -20.0
-offset_right = 658.39
+offset_right = 660.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect15" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 658.39
+offset_left = 660.0
 offset_top = -20.0
-offset_right = 786.39
+offset_right = 788.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect16" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 786.39
+offset_left = 788.0
 offset_top = -20.0
-offset_right = 914.39
+offset_right = 916.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect17" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 914.39
+offset_left = 916.0
 offset_top = -20.0
-offset_right = 1042.39
+offset_right = 1044.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect18" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1042.39
+offset_left = 1044.0
 offset_top = -20.0
-offset_right = 1170.39
+offset_right = 1172.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect20" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1293.98
+offset_left = 1300.0
 offset_top = -20.0
-offset_right = 1421.98
+offset_right = 1428.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect21" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1421.98
+offset_left = 1428.0
 offset_top = -20.0
-offset_right = 1549.98
+offset_right = 1556.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect22" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1549.98
+offset_left = 1556.0
 offset_top = -20.0
-offset_right = 1677.98
+offset_right = 1684.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect23" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1677.98
+offset_left = 1684.0
 offset_top = -20.0
-offset_right = 1805.98
+offset_right = 1812.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
 [node name="TextureRect19" type="TextureRect" parent="Blocks"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 1170.39
+offset_left = 1172.0
 offset_top = -20.0
-offset_right = 1298.39
+offset_right = 1300.0
 offset_bottom = 108.0
 texture = SubResource("AtlasTexture_ia84y")
 
