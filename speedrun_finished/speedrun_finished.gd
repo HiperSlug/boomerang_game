@@ -1,7 +1,6 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var final_time: int = SpeedrunTimer.get_final_time()
 	
@@ -28,6 +27,7 @@ func _ready() -> void:
 	$FinalTimeDisplay.text = time
 
 
-func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_type():
+func _input(event: InputEvent) -> void:
+	if not event.is_echo() and event.is_pressed():
+		SpeedrunTimer.end_speedrun_early()
 		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")

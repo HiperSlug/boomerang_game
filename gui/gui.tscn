@@ -122,22 +122,18 @@ icon = SubResource("AtlasTexture_n360k")
 flat = true
 expand_icon = true
 
-[node name="MuteButton" parent="PauseMenu" instance=ExtResource("2_ioifv")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -24.0
-offset_right = 0.0
+offset_left = -132.0
 offset_bottom = 64.0
 grow_horizontal = 0
 
-[node name="ResetButton2" type="Button" parent="PauseMenu"]
+[node name="ResetButton2" type="Button" parent="PauseMenu/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-offset_left = 1020.0
-offset_right = 1084.0
-offset_bottom = 64.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
@@ -147,8 +143,10 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="MuteButton" parent="PauseMenu/HBoxContainer2" instance=ExtResource("2_ioifv")]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -194,6 +192,6 @@ text = "00:00"
 [connection signal="pressed" from="PauseMenu/HBoxContainer/PauseButton" to="." method="unpause"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/MenueButton" to="." method="_on_menue_button_pressed"]
 [connection signal="pressed" from="PauseMenu/HBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="pressed" from="PauseMenu/ResetButton2" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer2/ResetButton2" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="pause"]
 [connection signal="pressed" from="HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

@@ -11,8 +11,8 @@ var state: STATE = STATE.OUT
 @export var inital_speed_out: float = 210
 @export var deceleration_out: float = 200
 @export var inital_speed_back: float = 150
-@export var acceleration_back: float = 600
-@export var terminal_return_speed: float = 400
+@export var acceleration_back: float = 400
+@export var terminal_return_speed: float = 600
 
 @export var very_fast_but_not_instant_teleport_speed: float = 1000
 

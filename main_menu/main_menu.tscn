@@ -1,11 +1,21 @@
-[gd_scene load_steps=8 format=4 uid="uid://bklojjl4fi16f"]
+[gd_scene load_steps=12 format=3 uid="uid://bklojjl4fi16f"]
 
 [ext_resource type="Script" uid="uid://i6kj2sugf7xp" path="res://main_menu/main_menu.gd" id="1_d3a7t"]
-[ext_resource type="SpriteFrames" uid="uid://ighhlcj6nf8q" path="res://player/player.tres" id="3_3shxk"]
 [ext_resource type="PackedScene" uid="uid://dlk011o6ucvn8" path="res://gui/mute_button.tscn" id="3_vu5tu"]
-[ext_resource type="TileSet" uid="uid://dtatic1opbqyt" path="res://levels/level_tileset.tres" id="4_3f7m4"]
+[ext_resource type="PackedScene" uid="uid://dmydh0hwoc1om" path="res://main_menu/background_texture.tscn" id="4_6tl50"]
 [ext_resource type="Script" uid="uid://csuuuf2o47g1x" path="res://main_menu/tile_map_layer.gd" id="5_6tl50"]
 [ext_resource type="Texture2D" uid="uid://c5srkv3xqx6bp" path="res://gui/button UI.png" id="6_6tl50"]
+[ext_resource type="Texture2D" uid="uid://cpovjq6stym4i" path="res://player/percival_.png" id="7_t6bnd"]
+[ext_resource type="Texture2D" uid="uid://75u5hkcahswa" path="res://levels/world_tileset.png" id="8_6at21"]
+[ext_resource type="Script" uid="uid://cg4br4tkltbn6" path="res://main_menu/character_animation.gd" id="8_ia84y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia84y"]
+atlas = ExtResource("8_6at21")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6at21"]
+atlas = ExtResource("7_t6bnd")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6bnd"]
 atlas = ExtResource("6_6tl50")
@@ -20,26 +30,247 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3a7t")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-position = Vector2(0, 235)
-scale = Vector2(9, 9)
-tile_map_data = PackedByteArray("AAAAAP3/AAAAAAkAAAAAAP7/AAAAAAoAAAAAAP//AAAAAAsAAAAAAAAAAAAAAAwAAAAAAAEAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAMAAAAAAA8AAAABAP3/AAAAAAkAAAABAP7/AAAAAAoAAAABAP//AAAAAAsAAAABAAAAAAAAAAwAAAABAAEAAAAAAA0AAAABAAIAAAAAAA4AAAABAAMAAAAAAA8AAAACAP3/AAAAAAkAAAACAP7/AAAAAAoAAAACAP//AAAAAAsAAAACAAAAAAAAAAwAAAACAAEAAAAAAA0AAAACAAIAAAAAAA4AAAACAAMAAAAAAA8AAAADAP3/AAAAAAkAAAADAP7/AAAAAAoAAAADAP//AAAAAAsAAAADAAAAAAAAAAwAAAADAAEAAAAAAA0AAAADAAIAAAAAAA4AAAADAAMAAAAAAA8AAAAEAP3/AAAAAAkAAAAEAP7/AAAAAAoAAAAEAP//AAAAAAsAAAAEAAAAAAAAAAwAAAAEAAEAAAAAAA0AAAAEAAIAAAAAAA4AAAAEAAMAAAAAAA8AAAAFAP3/AAAAAAkAAAAFAP7/AAAAAAoAAAAFAP//AAAAAAsAAAAFAAAAAAAAAAwAAAAFAAEAAAAAAA0AAAAFAAIAAAAAAA4AAAAFAAMAAAAAAA8AAAAGAP3/AAAAAAkAAAAGAP7/AAAAAAoAAAAGAP//AAAAAAsAAAAGAAAAAAAAAAwAAAAGAAEAAAAAAA0AAAAGAAIAAAAAAA4AAAAGAAMAAAAAAA8AAAAHAP3/AAAAAAkAAAAHAP7/AAAAAAoAAAAHAP//AAAAAAsAAAAHAAAAAAAAAAwAAAAHAAEAAAAAAA0AAAAHAAIAAAAAAA4AAAAHAAMAAAAAAA8AAAAIAP3/AAAAAAkAAAAIAP7/AAAAAAoAAAAIAP//AAAAAAsAAAAIAAAAAAAAAAwAAAAIAAEAAAAAAA0AAAAIAAIAAAAAAA4AAAAIAAMAAAAAAA8AAAAJAP3/AAAAAAkAAAAJAP7/AAAAAAoAAAAJAP//AAAAAAsAAAAJAAAAAAAAAAwAAAAJAAEAAAAAAA0AAAAJAAIAAAAAAA4AAAAJAAMAAAAAAA8AAAD///3/AAAAAAkAAAD///7/AAAAAAoAAAD/////AAAAAAsAAAD//wAAAAAAAAwAAAD//wEAAAAAAA0AAAD//wIAAAAAAA4AAAD//wMAAAAAAA8AAAA=")
-tile_set = ExtResource("4_3f7m4")
+[node name="BackgroundTexture" parent="." instance=ExtResource("4_6tl50")]
+layout_mode = 1
+
+[node name="Blocks" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_6tl50")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, 235)
-scale = Vector2(9, 9)
-tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAA=")
-tile_set = ExtResource("4_3f7m4")
-script = ExtResource("5_6tl50")
+[node name="TextureRect" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -1132.0
+offset_top = -20.0
+offset_right = -1004.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(664, 128)
-scale = Vector2(9, 9)
-sprite_frames = ExtResource("3_3shxk")
-animation = &"boost"
-autoplay = "run"
+[node name="TextureRect2" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -1004.0
+offset_top = -20.0
+offset_right = -876.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect3" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -876.0
+offset_top = -20.0
+offset_right = -748.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect4" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -748.0
+offset_top = -20.0
+offset_right = -620.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect5" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -620.0
+offset_top = -20.0
+offset_right = -492.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect6" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -492.0
+offset_top = -20.0
+offset_right = -364.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect14" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 530.39
+offset_top = -20.0
+offset_right = 658.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect15" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 658.39
+offset_top = -20.0
+offset_right = 786.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect16" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 786.39
+offset_top = -20.0
+offset_right = 914.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect17" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 914.39
+offset_top = -20.0
+offset_right = 1042.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect18" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1042.39
+offset_top = -20.0
+offset_right = 1170.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect20" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1293.98
+offset_top = -20.0
+offset_right = 1421.98
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect21" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1421.98
+offset_top = -20.0
+offset_right = 1549.98
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect22" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1549.98
+offset_top = -20.0
+offset_right = 1677.98
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect23" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1677.98
+offset_top = -20.0
+offset_right = 1805.98
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect19" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1170.39
+offset_top = -20.0
+offset_right = 1298.39
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect7" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -364.0
+offset_top = -20.0
+offset_right = -236.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect8" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -236.0
+offset_top = -20.0
+offset_right = -108.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect9" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = -108.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect10" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 148.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect11" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 148.0
+offset_top = -20.0
+offset_right = 276.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect12" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 276.0
+offset_top = -20.0
+offset_right = 404.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="TextureRect13" type="TextureRect" parent="Blocks"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 404.0
+offset_top = -20.0
+offset_right = 532.0
+offset_bottom = 108.0
+texture = SubResource("AtlasTexture_ia84y")
+
+[node name="PlayerAnimation" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -264.0
+offset_right = 128.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_6at21")
+script = ExtResource("8_ia84y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

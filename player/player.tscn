@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cwvrf7sgyc21c" path="res://player/CLOTHING_MATERIAL_MOVEMENT_01.wav" id="4_yw30f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
-size = Vector2(11, 8)
+size = Vector2(11, 9)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -21,7 +21,7 @@ animation = &"boost"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_rkbax")
 
 [node name="Timers" type="Node" parent="."]

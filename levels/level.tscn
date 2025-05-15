@@ -23,7 +23,7 @@ tile_set = ExtResource("3_5mrsh")
 [node name="Player" parent="." instance=ExtResource("2_safpt")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.55, 2.55)
+zoom = Vector2(3, 3)
 limit_left = -448
 limit_top = -128
 limit_right = 2224

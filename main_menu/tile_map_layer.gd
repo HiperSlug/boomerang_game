@@ -1,12 +1,16 @@
-extends TileMapLayer
+#@tool
+extends Control
 
-var speed: float = 16 * 3
+@export var paused: bool = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	#print(delta)
-	position.x -= speed * delta * scale.x
-	
-	if floori(position.x * scale.x) % 16 == 0:
-		position.x = 0
+var tile_size: int = 128
+var speed: float = tile_size * 3
+
+
+func _process(delta: float) -> void:
+	if paused:
+		return
+	position.x -= speed * delta
+	if position.x < - tile_size:
+		position.x += tile_size
 	

@@ -4,14 +4,14 @@ var is_speedrunning: bool = false
 var level_times: Array[int]
 
 var final_level: int = 9
-func start_speedrun() -> void:
+func start_speedrun() -> void: # called upon pressing start button or starting level 1.
 	is_speedrunning = true
 	level_times.resize(10)
-	level_times.fill(0.0)
+	level_times.fill(0)
 	start_level_timer()
 
 
-func end_speedrun_early() -> void:
+func end_speedrun_early() -> void: # called when leaving to menu or level select
 	is_speedrunning = false
 	level_times.resize(0)
 
@@ -25,27 +25,18 @@ func get_level_time() -> int:
 
 func _ready() -> void:
 	SignalBus.exit.connect(on_level_exit)
-	#start_speedrun()
 
 func on_level_exit(level_int: int, elapsed_time: int) -> void:
-	
-	level_times[level_int] = elapsed_time
 	start_level_timer()
 	
-	if level_int == final_level:
-		get_tree().change_scene_to_file("res://speedrun_finished/speedrun_finished.tscn")
+	if is_speedrunning:
+		level_times[level_int] = elapsed_time
 	
-	if is_speedrunning and level_int == final_level:
-		
-		for time: int in level_times:
-			if time != 0:
-				pass
-			else:
-				return
-		get_tree().change_scene_to_file("res://speedrun_finished/speedrun_finished.tscn") # Add a speedrun finished screen.
+	if level_int == final_level:
+		get_tree().call_deferred("change_scene_to_file","res://speedrun_finished/speedrun_finished.tscn")
 
 func get_final_time() -> int:
-	var final_time: int
+	var final_time: int = 0
 	for time: int in level_times:
 		final_time += time
 	return final_time

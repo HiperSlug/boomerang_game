@@ -6,53 +6,56 @@ extends Control
 
 @onready var timer_display: Label = $TimerDisplay
 func update_time() -> void:
-	var delta_since_start_msec: int = SpeedrunTimer.get_level_time()
-	time_elapsed = delta_since_start_msec
+	var time: int = SpeedrunTimer.get_level_time()
+	
+	time_elapsed = time
 	@warning_ignore("integer_division")
-	var minutes: int = floori(delta_since_start_msec / 60000) % 60
+	var minutes: int = floori(time / 60000) % 60
 	@warning_ignore("integer_division")
-	var seconds: int = floori(delta_since_start_msec / 1000) % 60
-	var miliseconds: int = delta_since_start_msec % 1000
+	var seconds: int = floori(time / 1000) % 60
+	var miliseconds: int = time % 1000
 	
 	var minutes_str: String = str(minutes)
 	if minutes < 10:
 		minutes_str = "0" + minutes_str
+		
 	var seconds_str: String = str(seconds)
 	if seconds < 10:
 		seconds_str = "0" + seconds_str
+		
 	var miliseconds_str: String = str(miliseconds)
 	if miliseconds < 10:
 		miliseconds_str = "00" + miliseconds_str
 	elif miliseconds < 100:
 		miliseconds_str = "0" + miliseconds_str
 	
-	var time: String = minutes_str + ":" + seconds_str + ":" + miliseconds_str
-	timer_display.text = time
+	var time_str: String = minutes_str + ":" + seconds_str + ":" + miliseconds_str
+	timer_display.text = time_str
 
-var updating_time: bool = true
 var time_elapsed: int = 0
 
 func _physics_process(_delta: float) -> void:
-	if updating_time:
+	if SpeedrunTimer.is_speedrunning:
 		update_time()
 
 func _ready() -> void:
-	#SpeedrunTimer.start_level_timer()
-	visible = true
-	unpause()
 	SignalBus.exit.connect(exit)
+	
+	unpause()
+	
+	visible = true
+	
 	$ColorRect2.color.a = 1
 	$ColorRect2.visible = true
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect2,"color:a",0,.2)
-	updating_time = SpeedrunTimer.is_speedrunning
+	
 	$TimerDisplay.visible = SpeedrunTimer.is_speedrunning
 
 func exit(_level_int: int, _time_elapsed: float) -> void:
 	pause_menu.visible = false
 	h_box_container.visible = false
 	$ColorRect2.visible = true
-	updating_time = false
 	if get_tree() != null:
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property($ColorRect2,"color:a",1,.2)
