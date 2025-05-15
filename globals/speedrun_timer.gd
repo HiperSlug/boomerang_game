@@ -3,10 +3,10 @@ extends Node
 var is_speedrunning: bool = false
 var level_times: Array[int]
 
-var final_level: int = 9
+var final_level: int = 14
 func start_speedrun() -> void: # called upon pressing start button or starting level 1.
 	is_speedrunning = true
-	level_times.resize(10)
+	level_times.resize(15)
 	level_times.fill(0)
 	start_level_timer()
 
@@ -33,7 +33,10 @@ func on_level_exit(level_int: int, elapsed_time: int) -> void:
 		level_times[level_int] = elapsed_time
 	
 	if level_int == final_level:
-		get_tree().call_deferred("change_scene_to_file","res://speedrun_finished/speedrun_finished.tscn")
+		if is_speedrunning:
+			get_tree().call_deferred("change_scene_to_file","res://speedrun_finished/speedrun_finished.tscn")
+		else:
+			get_tree().call_deferred("change_scene_to_file","res://main_menu/main_menu.tscn")
 
 func get_final_time() -> int:
 	var final_time: int = 0

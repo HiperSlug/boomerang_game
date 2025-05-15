@@ -52,11 +52,11 @@ func _ready() -> void:
 	
 	$TimerDisplay.visible = SpeedrunTimer.is_speedrunning
 
-func exit(_level_int: int, _time_elapsed: float) -> void:
+func exit(level_int: int, _time_elapsed: float) -> void:
 	pause_menu.visible = false
 	h_box_container.visible = false
 	$ColorRect2.visible = true
-	if get_tree() != null:
+	if level_int != 14 and get_tree() != null:
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property($ColorRect2,"color:a",1,.2)
 

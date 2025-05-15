@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bcbwtb20kq5uk"]
+[gd_scene load_steps=10 format=4 uid="uid://bcbwtb20kq5uk"]
 
 [ext_resource type="Script" uid="uid://1bjsee6ocm5c" path="res://levels/level.gd" id="1_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://vfcxxb2eickv" path="res://player/player.tscn" id="2_safpt"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://46kf6flxkbnl" path="res://collectable/collectable.tscn" id="7_vnv7o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n46q3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vnv7o"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_5mrsh")
@@ -21,6 +23,7 @@ tile_set = ExtResource("3_5mrsh")
 tile_set = ExtResource("3_5mrsh")
 
 [node name="Player" parent="." instance=ExtResource("2_safpt")]
+position = Vector2(-8, 8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -36,7 +39,7 @@ position = Vector2(0, 176)
 shape = SubResource("WorldBoundaryShape2D_n46q3")
 
 [node name="Exit" parent="." node_paths=PackedStringArray("gui") instance=ExtResource("5_safpt")]
-position = Vector2(456, 8)
+position = Vector2(0, 104)
 gui = NodePath("../CanvasLayer/GUI")
 
 [node name="Things" type="Node2D" parent="."]
@@ -46,3 +49,11 @@ gui = NodePath("../CanvasLayer/GUI")
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("6_gjl0y")]
 
 [node name="Collectable" parent="." instance=ExtResource("7_vnv7o")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -160)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_vnv7o")

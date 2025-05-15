@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=4 uid="uid://cvkyvj8yd4hwr"]
+
+[ext_resource type="PackedScene" uid="uid://bcbwtb20kq5uk" path="res://levels/level.tscn" id="1_tqn0i"]
+[ext_resource type="PackedScene" uid="uid://dour75457w7xl" path="res://levels/level_13.tscn" id="2_0of3o"]
+[ext_resource type="PackedScene" uid="uid://d18mppm3f5iex" path="res://switch/switch.tscn" id="3_nmpf3"]
+[ext_resource type="PackedScene" uid="uid://duxp0yslrlduq" path="res://toggleable_blocks/block_group.tscn" id="4_c166x"]
+[ext_resource type="PackedScene" uid="uid://dl3hv24wgv7iu" path="res://toggleable_blocks/toggleable_block.tscn" id="5_kf6oi"]
+
+[node name="Level12" instance=ExtResource("1_tqn0i")]
+
+[node name="Foreground" parent="." index="1"]
+tile_map_data = PackedByteArray("AAD+/wEAAAACAAAAAAD//wEAAAACAAAAAAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAD9/wEAAAACAAAAAAD9/wIAAAACAAEAAAD+/wMAAAACAAEAAAD//wMAAAACAAEAAAAAAAMAAAACAAEAAAABAAMAAAACAAEAAAACAAMAAAACAAEAAAADAAMAAAACAAEAAAADAAIAAAACAAEAAAACAAIAAAACAAEAAAABAAIAAAACAAEAAAAAAAIAAAACAAEAAAD//wIAAAACAAEAAAD+/wIAAAACAAEAAAAIAP7/AAACAAAAAAAHAP7/AAACAAAAAAAHAP//AAACAAEAAAAGAP//AAACAAAAAAAFAAAAAAACAAAAAAAEAAEAAAACAAAAAAAIAP//AAACAAEAAAAHAAAAAAACAAEAAAAGAAEAAAACAAEAAAAFAAEAAAACAAEAAAAEAAIAAAACAAEAAAAHAAEAAAACAAEAAAAGAAAAAAACAAEAAAAGAAIAAAACAAEAAAAJAP7/AAACAAAAAAAJAP//AAACAAEAAAAFAAIAAAACAAEAAAAEAAMAAAACAAEAAAAFAAMAAAACAAEAAAAGAAMAAAACAAEAAAAAAAQAAAACAAEAAAAVAPj/AAACAAEAAAAjAAAAAAAGAAAAAAAkAAAAAAAGAAAAAAAkAAEAAAAGAAEAAAAlAAAAAAAGAAAAAAAlAAEAAAAGAAEAAAAIAAAAAAACAAEAAAAIAAEAAAACAAEAAAAHAAIAAAACAAEAAAAJAAAAAAACAAEAAAAIAAIAAAACAAEAAAAVAPb/AAACAAEAAAAVAPf/AAACAAEAAAABAPz/AAACAAQAAAABAP3/AAACAAUAAAABAP7/AAACAAYAAAACAPz/AAADAAQAAAACAP3/AAADAAUAAAACAP7/AAADAAYAAAACAP//AAADAAcAAAACAAAAAAACAAgAAAADAPz/AAAEAAQAAAADAP3/AAAEAAUAAAADAP7/AAAEAAYAAAAIAPn/AAACAAQAAAAIAPr/AAACAAUAAAAIAPv/AAACAAYAAAAJAPn/AAADAAQAAAAJAPr/AAADAAUAAAAJAPv/AAADAAYAAAAJAPz/AAADAAcAAAAJAP3/AAACAAgAAAAKAPn/AAAEAAQAAAAKAPr/AAAEAAUAAAAKAPv/AAAEAAYAAAAHAP3/AAAIAAcAAAAFAP//AAAIAAcAAAD9/wAAAAAIAAcAAAA=")
+
+[node name="Exit" parent="." index="4"]
+position = Vector2(584, -8)
+next_level = ExtResource("2_0of3o")
+level_int = 12
+
+[node name="Switch" parent="Things" index="0" instance=ExtResource("3_nmpf3")]
+position = Vector2(344, -112)
+rotation = 3.14159
+
+[node name="BlockGroup" parent="Things" index="1" instance=ExtResource("4_c166x")]
+start_toggled = true
+
+[node name="ToggleableBlock" parent="Things/BlockGroup" index="0" instance=ExtResource("5_kf6oi")]
+position = Vector2(328, 8)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup" index="1" instance=ExtResource("5_kf6oi")]
+position = Vector2(344, 8)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup" index="2" instance=ExtResource("5_kf6oi")]
+position = Vector2(360, 8)
+
+[node name="BlockGroup2" parent="Things" index="2" instance=ExtResource("4_c166x")]
+position = Vector2(240, -32)
+
+[node name="ToggleableBlock" parent="Things/BlockGroup2" index="0" instance=ExtResource("5_kf6oi")]
+position = Vector2(328, 8)
+
+[node name="ToggleableBlock2" parent="Things/BlockGroup2" index="1" instance=ExtResource("5_kf6oi")]
+position = Vector2(344, 8)
+
+[node name="ToggleableBlock3" parent="Things/BlockGroup2" index="2" instance=ExtResource("5_kf6oi")]
+position = Vector2(360, 8)
+
+[node name="ToggleableBlock4" parent="Things/BlockGroup2" index="3" instance=ExtResource("5_kf6oi")]
+position = Vector2(360, 24)
+
+[node name="ToggleableBlock5" parent="Things/BlockGroup2" index="4" instance=ExtResource("5_kf6oi")]
+position = Vector2(328, 24)
+
+[node name="Collectable" parent="." index="7"]
+position = Vector2(344, 32)
+level_number = 12
+
+[connection signal="area_entered" from="Things/Switch" to="Things/BlockGroup" method="_on_switch_area_entered"]
+[connection signal="area_entered" from="Things/Switch" to="Things/BlockGroup2" method="_on_switch_area_entered"]

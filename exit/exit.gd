@@ -8,9 +8,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if next_level != null:
 			SignalBus.exit.emit(level_int - 1, gui.time_elapsed)
-			await get_tree().create_timer(.2).timeout
+			if get_tree() != null:
+				await get_tree().create_timer(.2).timeout
 			get_tree().change_scene_to_packed(next_level)
 			#get_tree().call_deferred("change_scene_to_packed",next_level)
 		else:
 			SignalBus.exit.emit(level_int - 1, gui.time_elapsed)
-			printerr("no level assigned to exit")

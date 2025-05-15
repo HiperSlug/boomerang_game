@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bb5m62jxax0vu"]
+[gd_scene load_steps=22 format=3 uid="uid://bb5m62jxax0vu"]
 
 [ext_resource type="Script" uid="uid://bsjd5q8feq0to" path="res://level_select/level_select.gd" id="1_kxnyd"]
 [ext_resource type="PackedScene" uid="uid://tbemk5ka72tb" path="res://level_select/level_select_button.tscn" id="1_sv8in"]
@@ -14,7 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://b3f6tqdavubti" path="res://levels/level_8.tscn" id="11_yqi8v"]
 [ext_resource type="PackedScene" uid="uid://d1dyi17g633ki" path="res://levels/level_9.tscn" id="12_i0e3c"]
 [ext_resource type="PackedScene" uid="uid://ce52tuheq2bg4" path="res://levels/level_10.tscn" id="13_bq1ln"]
+[ext_resource type="PackedScene" uid="uid://bp7i7woem4qd5" path="res://levels/level_11.tscn" id="14_cmrof"]
 [ext_resource type="PackedScene" uid="uid://dmydh0hwoc1om" path="res://main_menu/background_texture.tscn" id="15_bq1ln"]
+[ext_resource type="PackedScene" uid="uid://cvkyvj8yd4hwr" path="res://levels/level_12.tscn" id="15_xffje"]
+[ext_resource type="PackedScene" uid="uid://dour75457w7xl" path="res://levels/level_13.tscn" id="16_u1xsx"]
+[ext_resource type="PackedScene" uid="uid://dyvp8iqri2g5e" path="res://levels/level_14.tscn" id="17_cpswo"]
+[ext_resource type="PackedScene" uid="uid://bif5miegwylv4" path="res://levels/level_15.tscn" id="18_hhykt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtmfa"]
 atlas = ExtResource("4_kp0lh")
@@ -31,6 +36,7 @@ grow_vertical = 2
 script = ExtResource("1_kxnyd")
 
 [node name="BackgroundTexture" parent="." instance=ExtResource("15_bq1ln")]
+layout_mode = 1
 paused = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -133,6 +139,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "11"
+level_scene = ExtResource("14_cmrof")
 level_int = 11
 
 [node name="LevelSelectButton12" parent="GridContainer" instance=ExtResource("1_sv8in")]
@@ -140,6 +147,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "12"
+level_scene = ExtResource("15_xffje")
 level_int = 12
 
 [node name="LevelSelectButton13" parent="GridContainer" instance=ExtResource("1_sv8in")]
@@ -147,6 +155,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "13"
+level_scene = ExtResource("16_u1xsx")
 level_int = 13
 
 [node name="LevelSelectButton14" parent="GridContainer" instance=ExtResource("1_sv8in")]
@@ -154,6 +163,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "14"
+level_scene = ExtResource("17_cpswo")
 level_int = 14
 
 [node name="LevelSelectButton15" parent="GridContainer" instance=ExtResource("1_sv8in")]
@@ -161,6 +171,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "15"
+level_scene = ExtResource("18_hhykt")
 level_int = 15
 
 [node name="Button" type="Button" parent="."]
